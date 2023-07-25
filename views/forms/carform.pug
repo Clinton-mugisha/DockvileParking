@@ -1,0 +1,186 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  title Car form
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/css/tether.min.css')
+  link(rel='stylesheet' href='/mycss/home.css')
+  link(rel='stylesheet' href='/css/lib/bootstrap/css/bootstrap.css')
+// partial:index.partial.html
+#wrapper
+  .overlay
+  // Sidebar
+  nav#sidebar-wrapper.navbar.navbar-inverse.fixed-top(role='navigation')
+    ul.nav.sidebar-nav
+      .sidebar-header
+        .sidebar-brand
+          h4(style='color: antiquewhite;') Dockvile Parking
+      li
+        a(href='home') Dashboard
+      li
+        a(href='revenue') Revenue
+      li
+        a(href='events') Events
+      li
+        a(href='team') Team
+      li.dropdown
+        a.dropdown-toggle(href='#works' data-toggle='dropdown')
+          | Services
+          span.caret
+        ul.dropdown-menu.animated.fadeInLeft(role='menu')
+          .dropdown-header Services Offered
+          li
+            a(href='parking') Parking
+          li
+            a(href='tire') Tire Clinic
+          li
+            a(href='renting') Renting Batteries
+      li
+        a(href='settings') Settings
+      li
+        a(href='email') Email
+  // /#sidebar-wrapper
+  // Page Content
+  #page-content-wrapper
+    button.hamburger.animated.fadeInLeft.is-closed(type='button' data-toggle='offcanvas')
+      span.hamb-top
+      span.hamb-middle
+      span.hamb-bottom
+// /#wrapper
+// partial
+// car form
+div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height: 900px; width: 752px; top: 30px; left: 436px; opacity:80%;')
+  div(style='position: relative; width: 703px; height: 674px; left: 20px; top: 20px;')
+    form(name='registration' method='POST' action='#' onsubmit=' return validate(event);')
+      .row.g-3
+        .col(style='text-align: center;')
+          h1 Car Form
+      .row.g-3
+        .col
+          input.form-control(type='text' placeholder='First name' aria-label='First name' name='firstname')
+          span#firstname-error
+        .col
+          input.form-control(type='text' placeholder='Last name' aria-label='Last name' name='lastname')
+          span#lastname-error
+        .col
+          .col-auto
+            label.visually-hidden(for='autoSizingSelect') Gender
+            select#autoSizingSelect.form-select(itemid='gender')
+              option(selected='') Gender
+              option(value='1') Male
+              option(value='2') Female
+            span#gender-error
+      br
+      .row.g-3
+        .col
+          input#number-plate.form-control(type='text' placeholder='Number plate' aria-label='Number plate')
+          span#number-plate-error
+        .col
+          input#color.form-control(type='text' placeholder='Color' aria-label='Color')
+          span#color-error
+      br
+      .row.g-3
+        .col
+          label(for='') Arrival time
+          input#arrival-time.form-control(type='time' placeholder='Arrival time' aria-label='Arrival time')
+          span#arrival-time-error
+        .col
+          label(for='') Depature time
+          input#depature-time.form-control(type='time' placeholder='Depature Time' aria-label='Depature time')
+          span#departure-time-error
+      br
+      .row.g-3
+        .col
+          input#car-type.form-control(type='text' placeholder='Model' aria-label='Model')
+          span#car-type-error
+        .col
+          input#date.form-control(type='date' placeholder='Date' aria-label='Date')
+          span#date-error
+        .col
+          input.form-control(type='text' placeholder='contact' aria-label='contact' name='phone')
+          span#phone-error
+      br
+      .row.g-3
+        .col
+          .col-auto
+            label.visually-hidden(for='autoSizingSelect') Period
+            select#autoSizingSelect.form-select
+              option(selected='') Period
+              option(value='1') Day
+              option(value='2') Night
+              option(value='3') Less than 3 hours
+        .col
+          .col-auto
+            label.visually-hidden(for='autoSizingSelect')  Amount
+            select#autoSizingSelect.form-select
+              option(selected='') Amount
+              option(value='1') 2000
+              option(value='2') 3000
+        .col
+          input.form-control(type='text' placeholder='NIN' aria-label='NIN' name='nin')
+          span#nin-error
+      br
+      .row.g-3
+        .col
+          input.form-control(type='number' placeholder='Identifier' aria-label='Identifier' min='1' max='200' name='number')
+          span#number-error
+      br
+      .col(style='text-align: center;')
+        h1 Other Services
+        br
+      .row.g-3
+        .col
+          h3 Car tyre clinic
+          .form-check
+            input#flexCheckDefault.form-check-input(type='checkbox' value='')
+            label.form-check-label(for='flexCheckDefault')
+              | tire pressure
+          .form-check
+            input#flexCheckDefault.form-check-input(type='checkbox' value='')
+            label.form-check-label(for='flexCheckDefault')
+              | Valves
+          .form-check
+            input#flexCheckDefault.form-check-input(type='checkbox' value='')
+            label.form-check-label(for='flexCheckDefault')
+              | puncture fixing
+        .col
+          h3 Battery Section
+          input#size.form-control(type='text' placeholder='Size' aria-label='Model')
+          span#size-error
+      br
+      button.btn.btn-primary(type='submit') Submit
+script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js')
+script(src='/script/script.js')
+script(src='/css/lib/bootstrap/js/bootstrap.js')
+script(src='/script/validate.js')
+//
+  <script>
+  // Validating for NIN
+  let nin = document.registration.nin
+  let ninError = document.getElementById("nin-error")
+  if(nin.value == ""){
+  nin.style.border = "1px solid red";
+  ninError.textContent = "NIN is required";
+  ninError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
+  nin.focus();
+  error++;
+  }
+  const ninRegex = /^CF([a-zA-Z0-9]{12})+$/
+  const ninRegex2 = /^CM([a-zA-Z0-9]{12})+$/
+  if(!(ninRegex.test(nin.value)|| ninRegex2.test(nin.value))){
+  nin.style.border = "1px solid red";
+  ninError.textContent = "NIN should look like CFXXXXXXX or CMXXXXXXX";
+  ninError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
+  nin.focus();
+  error++;
+  }
+  else{
+  nin.style.border = "1px solid green";
+  ninError.textContent = "";
+  }
+  </script>

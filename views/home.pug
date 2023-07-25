@@ -1,0 +1,147 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  title home
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/css/tether.min.css')
+  link(rel='stylesheet' href='/mycss/home.css')
+// partial:index.partial.html
+#wrapper
+  .overlay
+  // Sidebar
+  nav#sidebar-wrapper.navbar.navbar-inverse.fixed-top(role='navigation')
+    ul.nav.sidebar-nav
+      .sidebar-header
+        .sidebar-brand
+          h4(style='color: antiquewhite;') Dockvile Parking
+      li
+        a(href='home.html') Dashboard
+      li
+        a(href='revenue.html') Revenue
+      li
+        a(href='events.html') Events
+      li
+        a(href='team.html') Team
+      li.dropdown
+        a.dropdown-toggle(href='#works' data-toggle='dropdown')
+          | Services
+          span.caret
+        ul.dropdown-menu.animated.fadeInLeft(role='menu')
+          .dropdown-header Services Offered
+          li
+            a(href='parking') Parking
+          li
+            a(href='tireclinic') Tire Clinic
+          li
+            a(href='rentingb') Renting Batteries
+      li
+        a(href='settings') Settings
+      li
+        a(href='email') Email
+  // /#sidebar-wrapper
+  // Page Content
+  #page-content-wrapper
+    button.hamburger.animated.fadeInLeft.is-closed(type='button' data-toggle='offcanvas')
+      span.hamb-top
+      span.hamb-middle
+      span.hamb-bottom
+.container
+  .row(style='background-color:rgba(255, 255, 255, 0.5);\
+  height: 525px;\
+  width: 1470px;\
+  display: flex;\
+  position: absolute;\
+  top: 6px;\
+  left: 20px;\
+  opacity: 80%;')
+    div(style=' position: relative;left: 52px; top: 32px;')
+      .card-hover
+        .card-hover__content
+          h3.card-hover__title
+            | Park 
+            span with
+            |  us now!
+          p.card-hover__text
+            | Bellow is a table containing all the data of customers who have parked with us
+          a.card-hover__link(href='parkingtable.html')
+            span view table
+            svg(fill='none' viewbox='0 0 24 24' stroke-width='1.5' stroke='currentColor')
+              path(stroke-linecap='round' stroke-linejoin='round' d='M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3')
+        .card-hover__extra
+          h4
+            | View
+            span  User
+            |  Table 
+            span now
+        img(src='/images/3.jpg' alt='')
+    // second card
+    div(style='position: relative; left: 105px; top: 34px;')
+      .card-hover
+        .card-hover__content
+          h3.card-hover__title
+            | Tire
+            span  Clinic
+          p.card-hover__text
+            | Bellow is a table containing all the data of customers who have recieved tire
+            | clinic services
+          a.card-hover__link(href='tireclinict.html')
+            span view table
+            svg(fill='none' viewbox='0 0 24 24' stroke-width='1.5' stroke='currentColor')
+              path(stroke-linecap='round' stroke-linejoin='round' d='M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3')
+        .card-hover__extra
+          h4
+            | View
+            span  Tire Clinic
+            |  Table 
+            span now
+        img(src='/images/tire3.jpeg' alt='')
+    // 3rd card
+    div(style='position: relative; left: 155px; top: 34px;')
+      .card-hover
+        .card-hover__content
+          h3.card-hover__title
+            | Rent
+            span  battery
+          p.card-hover__text
+            | Bellow is a table containing all the data of customers who have rented a batery
+            | for there automobiles
+          a.card-hover__link(href='batteryr.html')
+            span view table
+            svg(fill='none' viewbox='0 0 24 24' stroke-width='1.5' stroke='currentColor')
+              path(stroke-linecap='round' stroke-linejoin='round' d='M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3')
+        .card-hover__extra
+          h4
+            | View
+            span  Rented Batteries
+            |  Table 
+            span now
+        img(src='/images/battery.jpeg' alt='')
+    // 4th card
+    div(style='position: relative; left: 170px; top: 34px;')
+      .card-hover
+        .card-hover__content
+          h3.card-hover__title
+            | Sign
+            span Off
+          p.card-hover__text Bellow is a table containing all the data of customers who are signing out
+          a.card-hover__link(href='signoff.html')
+            span view table
+            svg(fill='none' viewbox='0 0 24 24' stroke-width='1.5' stroke='currentColor')
+              path(stroke-linecap='round' stroke-linejoin='round' d='M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3')
+        .card-hover__extra
+          h4
+            | View
+            span  sigoff
+            |  Table 
+            span now
+        img(src='/images/transac.jpeg' alt='')
+// /#page-content-wrapper
+// /#wrapper
+// partial
+script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js')
+script(src='/script/script.js')
