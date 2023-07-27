@@ -532,4 +532,111 @@ p {
     transition-delay: 500ms;
   }
 }
-    
+/* Your existing CSS styles... */
+
+/* CSS for text */
+.hero-header {
+  position: relative;
+  text-align: center;
+  margin-top: 10px;
+  /* Add the following styles to make sure the text stays on top and center of the cards */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(12vh - 70px); /* Adjust the height to keep the text at the top */
+  z-index: 1;
+  background-color: transparent;
+}
+
+.hero-title {
+  font-size: 12vh;
+  font-family: fantasy;
+  color: aqua;
+  margin: 0;
+}
+
+@media screen and (min-width: 576px) {
+  .hero-title {
+    font-size: 5vh;
+  }
+}
+
+/* CARD COMPONENT */
+
+/* ... (other existing card styles) ... */
+
+.card {
+  /* ... (existing card styles) ... */
+  position: relative; /* Add position relative to the card */
+}
+
+.card__content {
+  /* ... (existing card content styles) ... */
+  position: absolute;
+  bottom: 0; /* Set position to bottom of the card */
+  left: 0; /* Align to the left of the card */
+  width: 100%; /* Make it full-width of the card */
+}
+
+/* ... (existing card content styles) ... */
+/* Your existing CSS styles... */
+
+/* CSS for text */
+.hero-header {
+  position: absolute;
+  text-align: center;
+  top: 30px;
+  left: 150px;
+  /* Add the following styles to place the text at the top and in the middle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(7vh - 70px); /* Adjust the height to place it in the middle */
+  z-index: 1;
+  background-color: transparent;
+}
+
+.hero-title {
+  font-size: 12vh;
+  font-family: fantasy;
+  color: aqua;
+  margin: 0;
+}
+
+/* Adjust font size for different screen sizes */
+@media screen and (min-width: 576px) {
+  .hero-title {
+    font-size: 4vh; /* Adjust the font size for small screens */
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .hero-title {
+    font-size: 12vh; /* Adjust the font size for medium screens */
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .hero-title {
+    font-size: 15vh; /* Adjust the font size for large screens */
+  }
+}
+
+/* CARD COMPONENT */
+
+/* ... (other existing card styles) ... */
+
+.card {
+  /* ... (existing card styles) ... */
+  position: relative; /* Add position relative to the card */
+}
+
+.card__content {
+  /* ... (existing card content styles) ... */
+  position: absolute;
+  bottom: 0; /* Set position to bottom of the card */
+  left: 0; /* Align to the left of the card */
+  width: 100%; /* Make it full-width of the card */
+}
+
+/* ... (existing card content styles) ... */

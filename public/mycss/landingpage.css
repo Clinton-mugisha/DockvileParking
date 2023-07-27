@@ -1,75 +1,71 @@
-body{
-    background-image: url(/images/1.jpeg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-   
-}
-#d{
-color: white;
-    font-family:fantasy;
-    font-size: 156px;
-    position: absolute;
-    left: 0cm;
-    top:5cm;
-}
-#h{
-    color: black;
-    font-family:fantasy;
-    font-size: 100px;
-    position: absolute;
-    left:0cm;
-    top:11cm ;
-}
-#p{
-    color: aqua;
-    font-family:fantasy;
-    font-size: 100px;
-    position: absolute;
-    left: 0cm;
-    top:14cm ;
-}
-#b{
-    background-color: aqua;
-
-    
-}
-.container{
-    max-width: fit-content;
-}
-  
-@import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
-body{
+/* Default styles for all screen sizes */
+body {
+  background-image: url(/images/1.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
   margin: 0;
   padding: 0;
   display: flex;
   height: 100vh;
-  align-items: center;
-  justify-content: center;
+  font-family: fantasy;
+  flex-direction: column; /* Align content vertically */
 }
-span{
+
+.container {
+  max-width: 100%;
+  text-align: left; /* Align text to the left */
+  padding: 20px; /* Add padding to the container for better spacing */
+  flex-grow: 1; /* Allow the container to grow and push content to the bottom */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Align content to the bottom for default layout */
+}
+
+p {
+  margin: 0; /* Remove default paragraph margins to align at the bottom */
+  font-size: 12vw; /* Use viewport units to make the text responsive */
+  line-height: 1.2; /* Add some line height to improve readability */
+}
+
+#d {
+  color: white;
+  font-size: 15vw; /* Use viewport units to make the text responsive */
+}
+
+#h {
+  color: black;
+  font-size: 15vw; /* Use viewport units to make the text responsive */
+}
+
+#p {
+  color: aqua;
+  font-size: 15vw; /* Use viewport units to make the text responsive */
+}
+
+span {
   position: absolute;
+  top: 20px; /* Position the span at the top */
+  right: 20px; /* Position the span at the right */
   display: inline-flex;
   width: 180px;
   height: 55px;
-  margin: 0 15px;
   perspective: 1000px;
-  top:23px;
-  right:0cm;
 }
-span a{
+
+span a {
   font-size: 19px;
   letter-spacing: 1px;
   transform-style: preserve-3d;
   transform: translateZ(-25px);
-  transition: transform .25s;
+  transition: transform 0.25s;
   font-family: 'Montserrat', sans-serif;
-  
+  text-decoration: none; /* Remove underline from anchor links */
 }
+
 span a:before,
-span a:after{
-  position: absolute;
+span a:after {
   content: "login";
   height: 55px;
   width: 180px;
@@ -80,15 +76,37 @@ span a:after{
   box-sizing: border-box;
   border-radius: 5px;
 }
-span a:before{
+
+span a:before {
   color: #fff;
   background: #000;
   transform: rotateY(0deg) translateZ(25px);
 }
-span a:after{
+
+span a:after {
   color: #000;
   transform: rotateX(90deg) translateZ(25px);
 }
-span a:hover{
+
+span a:hover {
   transform: translateZ(-25px) rotateX(-90deg);
+}
+
+/* Media query for larger screens */
+@media only screen and (min-width: 768px) {
+  #d {
+    font-size: 156px;
+  }
+
+  #h {
+    font-size: 100px;
+  }
+
+  #p {
+    font-size: 100px;
+  }
+
+  p {
+    font-size: 8vw; /* Adjust the paragraph font size for larger screens */
+  }
 }

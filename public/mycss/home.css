@@ -505,3 +505,38 @@ h5 {
   transform: scale(1.2);
   transition: 0.35s 0.35s transform cubic-bezier(0.1, 0.72, 0.4, 0.97);
 }
+
+/* Your existing CSS styles */
+
+/* Add the media query for responsive design */
+@media (max-width: 767px) {
+  body {
+    overflow-x: hidden;
+  }
+  #wrapper {
+    padding-left: 0;
+  }
+  #sidebar-wrapper {
+    left: 0;
+    margin-left: 0;
+  }
+  #wrapper.toggled #sidebar-wrapper {
+    width: 100%;
+    left: 0;
+  }
+  #page-content-wrapper {
+    padding-top: 70px;
+    position: relative;
+    margin-right: 0;
+  }
+  #wrapper.toggled #page-content-wrapper {
+    margin-right: 0;
+  }
+  .sidebar-nav li a::before {
+    display: none;
+  }
+}
+
+/* Add more media queries for larger screen sizes if needed */
+
+/* Your existing CSS styles */
