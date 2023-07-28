@@ -1,0 +1,55 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/css/tether.min.css')
+  link(rel='stylesheet' href='/mycss/parking.css')
+  title settings
+// partial:index.partial.html
+#wrapper
+  .overlay
+  // Sidebar
+  nav#sidebar-wrapper.navbar.navbar-inverse.fixed-top(role='navigation')
+    ul.nav.sidebar-nav
+      .sidebar-header
+        .sidebar-brand
+          h4(style='color: antiquewhite;') Dockvile Parking
+      li
+        a(href='home') Dashboard
+      li
+        a(href='revenue') Revenue
+      li
+        a(href='events') Events
+      li
+        a(href='team') Team
+      li.dropdown
+        a.dropdown-toggle(href='#works' data-toggle='dropdown')
+          | Services
+          span.caret
+        ul.dropdown-menu.animated.fadeInLeft(role='menu')
+          .dropdown-header Services Offered
+          li
+            a(href='parking') Parking
+          li
+            a(href='tireclinic') Tire Clinic
+          li
+            a(href='rentingb') Renting Batteries
+      li
+        a(href='settings') Settings
+      li
+        a(href='email') Email
+  // /#sidebar-wrapper
+  // Page Content
+  #page-content-wrapper
+    button.hamburger.animated.fadeInLeft.is-closed(type='button' data-toggle='offcanvas')
+      span.hamb-top
+      span.hamb-middle
+      span.hamb-bottom
+script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js')
+script(src='/script/pscript.js')

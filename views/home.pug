@@ -17,13 +17,13 @@ head
         .sidebar-brand
           h4(style='color: antiquewhite;') Dockvile Parking
       li
-        a(href='home.html') Dashboard
+        a(href='home') Dashboard
       li
-        a(href='revenue.html') Revenue
+        a(href='revenue') Revenue
       li
-        a(href='events.html') Events
+        a(href='events') Events
       li
-        a(href='team.html') Team
+        a(href='team') Team
       li.dropdown
         a.dropdown-toggle(href='#works' data-toggle='dropdown')
           | Services
@@ -145,16 +145,17 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.m
 script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js')
 script(src='/script/script.js')
-  // Add a new script to handle mobile menu toggle
-  script.
-    // Function to toggle the sidebar on mobile
-    function toggleSidebar() {
-      $("#wrapper").toggleClass("toggled");
-    }
-    // Bind click event to the hamburger button
-    $(".hamburger").click(function() {
-      toggleSidebar();
-    });
-script(src='/script/s.js')
+script(src='/script/pscript.js')
+//-   // Add a new script to handle mobile menu toggle
+//-   script.
+//-     // Function to toggle the sidebar on mobile
+//-     function toggleSidebar() {
+//-       $("#wrapper").toggleClass("toggled");
+//-     }
+//-     // Bind click event to the hamburger button
+//-     $(".hamburger").click(function() {
+//-       toggleSidebar();
+//-     });
+//- script(src='/script/s.js')
 
 

@@ -46,5 +46,33 @@ router.get('/truck', (req, res)=>{
 router.get('/sign', (req, res)=>{
     res.render('signup.pug')
 });
+// email route
+router.get('/email', (req, res)=>{
+    res.render('email.pug')
+});
+// event route
+router.get('/events', (req, res)=>{
+    res.render('events.pug')
+});
+// rentingb route
+router.get('/rentingb', (req, res)=>{
+    res.render('rentingb.pug')
+});
+// revenue route
+router.get('/revenue', (req, res)=>{
+    res.render('revenue.pug')
+});
+// settings route
+router.get('/settings', (req, res)=>{
+    res.render('settings.pug')
+});
+// team rote
+router.get('/team', (req, res)=>{
+    res.render('team.pug')
+});
+// tireclinic route
+router.get('/tire', (req, res)=>{
+    res.render('tire.pug')
+});
 
 module.exports = router
