@@ -53,7 +53,7 @@ head
 // car form
 div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height: 900px; width: 752px; top: 60%; left: 50%; opacity:80%;transform: translate(-50%, -50%);')
   div(style='position: relative; width: 703px; height: 674px; left: 20px; top: 20px;')
-    form(name='registration' method='POST' action='#' onsubmit=' return validate(event);')
+    form(name='car' method='POST' action='/api/regcar' onsubmit=' return validate(event);')
       .row.g-3
         .col(style='text-align: center;')
           h1 Car Form
@@ -67,36 +67,36 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
         .col
           .col-auto
             label.visually-hidden(for='autoSizingSelect') Gender
-            select#autoSizingSelect.form-select(itemid='gender')
+            select#autoSizingSelect.form-select(itemid='gender' name='gender')
               option(selected='') Gender
-              option(value='1') Male
-              option(value='2') Female
+              option(value='Male' name='gender') Male
+              option(value='Female' name='gender') Female
             span#gender-error
       br
       .row.g-3
         .col
-          input#number-plate.form-control(type='text' placeholder='Number plate' aria-label='Number plate')
+          input#number-plate.form-control(type='text' placeholder='Number plate' aria-label='Number plate' name='numberplate')
           span#number-plate-error
         .col
-          input#color.form-control(type='text' placeholder='Color' aria-label='Color')
+          input#color.form-control(type='text' placeholder='Color' aria-label='Color' name='color')
           span#color-error
       br
       .row.g-3
         .col
           label(for='') Arrival time
-          input#arrival-time.form-control(type='time' placeholder='Arrival time' aria-label='Arrival time')
+          input#arrival-time.form-control(type='time' placeholder='Arrival time' aria-label='Arrival time' name='arrivaltime')
           span#arrival-time-error
         .col
           label(for='') Depature time
-          input#depature-time.form-control(type='time' placeholder='Depature Time' aria-label='Depature time')
+          input#depature-time.form-control(type='time' placeholder='Depature Time' aria-label='Depature time' name='depaturetime')
           span#departure-time-error
       br
       .row.g-3
         .col
-          input#car-type.form-control(type='text' placeholder='Model' aria-label='Model')
+          input#car-type.form-control(type='text' placeholder='Model' aria-label='Model' name='model')
           span#car-type-error
         .col
-          input#date.form-control(type='date' placeholder='Date' aria-label='Date')
+          input#date.form-control(type='date' placeholder='Date' aria-label='Date' name='date')
           span#date-error
         .col
           input.form-control(type='text' placeholder='contact' aria-label='contact' name='phone')
@@ -106,18 +106,18 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
         .col
           .col-auto
             label.visually-hidden(for='autoSizingSelect') Period
-            select#autoSizingSelect.form-select
+            select#autoSizingSelect.form-select(name='period')
               option(selected='') Period
-              option(value='1') Day
-              option(value='2') Night
-              option(value='3') Less than 3 hours
+              option(value='Day') Day
+              option(value='Night') Night
+              option(value='Less than 3 hours') Less than 3 hours
         .col
           .col-auto
             label.visually-hidden(for='autoSizingSelect')  Amount
-            select#autoSizingSelect.form-select
+            select#autoSizingSelect.form-select(name='amount')
               option(selected='') Amount
-              option(value='1') 2000
-              option(value='2') 3000
+              option(value='2000') 2000
+              option(value='3000') 3000
         .col
           input.form-control(type='text' placeholder='NIN' aria-label='NIN' name='nin')
           span#nin-error
@@ -134,20 +134,20 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
         .col
           h3 Car tyre clinic
           .form-check
-            input#flexCheckDefault.form-check-input(type='checkbox' value='')
+            input#flexCheckDefault.form-check-input(type='checkbox' value='Tire Pressure' name='tireclinic')
             label.form-check-label(for='flexCheckDefault')
               | tire pressure
           .form-check
-            input#flexCheckDefault.form-check-input(type='checkbox' value='')
+            input#flexCheckDefault.form-check-input(type='checkbox' value='Valves' name='tireclinic')
             label.form-check-label(for='flexCheckDefault')
               | Valves
           .form-check
-            input#flexCheckDefault.form-check-input(type='checkbox' value='')
+            input#flexCheckDefault.form-check-input(type='checkbox' value='Puncturefixing' name='tireclinic')
             label.form-check-label(for='flexCheckDefault')
               | puncture fixing
         .col
           h3 Battery Section
-          input#size.form-control(type='text' placeholder='Size' aria-label='Model')
+          input#size.form-control(type='text' placeholder='Size' aria-label='Model' name='battery')
           span#size-error
       br
       button.btn.btn-primary(type='submit') Submit

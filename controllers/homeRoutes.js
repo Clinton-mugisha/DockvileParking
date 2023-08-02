@@ -17,29 +17,30 @@ router.get('/parking', (req, res)=>{
     res.render('parking.pug')
 });
 
-// car form route
-router.get('/car', (req, res)=>{
-    res.render('forms/carform.pug')
-});
 
 // car form rout
 router.get('/taxi', (req, res)=>{
-    res.render('forms/taxiform.pug')
+    res.render('taxiform.pug')
+});
+
+// car form route
+router.get('/car', (req, res)=>{
+    res.render('carform.pug')
 });
 
 // car form rout
 router.get('/coaster', (req, res)=>{
-    res.render('forms/coasterform.pug')
+    res.render('coasterform.pug')
 });
 
 // car form rout
 router.get('/boda', (req, res)=>{
-    res.render('forms/bodabodaform.pug')
+    res.render('bodabodaform.pug')
 });
 
 // car form rout
 router.get('/truck', (req, res)=>{
-    res.render('forms/truckform.pug')
+    res.render('truckform.pug')
 });
 
 // signup route
@@ -66,6 +67,7 @@ router.get('/revenue', (req, res)=>{
 router.get('/settings', (req, res)=>{
     res.render('settings.pug')
 });
+
 // team rote
 router.get('/team', (req, res)=>{
     res.render('team.pug')
