@@ -3,12 +3,13 @@ const Car = require('../models/carmodel')
 const router = express.Router();
 
 
+
 router.post('/regcar', async(req, res) => {
     try{
         const car = new Car(req.body);
         await car.save();
         console.log(req.body);
-        res.redirect('/api/car') // redirect to employee page
+        res.redirect('/api/home') // redirect to home page
        
     }catch(error){
         res.status(400).render('carform')

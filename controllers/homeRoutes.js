@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 
+
 // hello route
 router.get('/home', (req, res)=>{
     res.render('home.pug')
