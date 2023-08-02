@@ -137,9 +137,109 @@ head
             |  Table 
             span now
         img(src='/images/transac.jpeg' alt='')
-// /#page-content-wrapper
-// /#wrapper
-// partial
+section(style='position: absolute; left: 38px; width: 650px; height: 450px; top: 542px;')
+  section(style='position: relative; width: 100%; height: 100%; bottom:5px;')
+    .card(style='width: 100%; height: 100%; background-color: rgb(240, 248, 255, 0.8);')
+      .card-body(style='height: 100%;')
+        h5 Statistics
+        hr
+        canvas#myChart
+section(style='position: absolute; left: 712px; width: 507px; height: 350px; top: 542px;')
+  section(style=' position: relative; width: 100%; height: 100%; bottom:5px;')
+    .card(style='width: 100%; height: 100%;')
+      .card-body(style='height: 100%;')
+        h5 Revenue
+        hr
+        canvas#mylineChart
+script(src='https://cdn.jsdelivr.net/npm/chart.js')
+script.
+  const ctx = document.getElementById('myChart');
+  new Chart(ctx, {
+  type: 'bar',
+  data: {
+  labels: ['car', 'trucks', 'taxi', 'Boda', 'coaster'],
+  datasets: [{
+  label: '# Number of vehicles',
+  data: [12, 19, 3, 5, 2],
+  backgroundColor: [
+  'rgba(255, 99, 132, 0.7)',
+  'rgba(255, 159, 64, 0.7)',
+  'rgba(255, 205, 86, 0.7)',
+  'rgba(75, 192, 192, 0.7)',
+  'rgba(54, 162, 235, 0.7)'
+  ],
+  borderColor: [
+  'rgb(255, 99, 132)',
+  'rgb(255, 159, 64)',
+  'rgb(255, 205, 86)',
+  'rgb(75, 192, 192)',
+  'rgb(54, 162, 235)'
+  ],
+  borderWidth: 1
+  }]
+  },
+  options: {
+  scales: {
+  y: {
+  beginAtZero: true
+  }
+  }
+  }
+  });
+script.
+  const ct = document.getElementById('mylineChart');
+  new Chart(ct, {
+  type: 'line',
+  data: {
+  labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+  datasets: [
+  {
+  label: 'car',
+  data: [12, 14, 16, 10, 8, 6, 4], // Replace these values with your specific data
+  backgroundColor: 'rgba(255, 99, 132, 0.2)',
+  borderColor: 'rgb(255, 99, 132)',
+  borderWidth: 1,
+  },
+  {
+  label: 'trucks',
+  data: [19, 18, 17, 20, 21, 15, 12], // Replace these values with your specific data
+  backgroundColor: 'rgba(255, 159, 64, 0.2)',
+  borderColor: 'rgb(255, 159, 64)',
+  borderWidth: 1,
+  },
+  {
+  label: 'taxi',
+  data: [3, 4, 2, 6, 5, 7, 9], // Replace these values with your specific data
+  backgroundColor: 'rgba(255, 205, 86, 0.2)',
+  borderColor: 'rgb(255, 205, 86)',
+  borderWidth: 1,
+  },
+  {
+  label: 'Boda',
+  data: [5, 8, 10, 7, 6, 9, 11], // Replace these values with your specific data
+  backgroundColor: 'rgba(75, 192, 192, 0.2)',
+  borderColor: 'rgb(75, 192, 192)',
+  borderWidth: 1,
+  },
+  {
+  label: 'coaster',
+  data: [2, 3, 4, 3, 2, 1, 0], // Replace these values with your specific data
+  backgroundColor: 'rgba(54, 162, 235, 0.2)',
+  borderColor: 'rgb(54, 162, 235)',
+  borderWidth: 1,
+  },
+  ],
+  },
+  options: {
+  scales: {
+  y: {
+  beginAtZero: true,
+  },
+  },
+  },
+  });
+
+
 script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js')
 script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
