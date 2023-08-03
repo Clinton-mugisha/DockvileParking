@@ -53,78 +53,78 @@ head
 // car form
 div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height: 900px; width: 752px; top: 60%; left: 50%; opacity:80%;transform: translate(-50%, -50%);')
   div(style='position: relative; width: 703px; height: 674px; left: 20px; top: 20px;')
-    form(name='car' method='POST' action='/api/regcar' onsubmit='return validate(event);')
+    form(name='car' method='POST' action='/api/car/edit?id='+car._id onsubmit='return validate(event);')
       .row.g-3
         .col(style='text-align: center;')
           h1 Car Form
       .row.g-3
         .col
-          input.form-control(type='text' placeholder='First name' aria-label='First name' name='firstname')
+          input.form-control(type='text' placeholder='First name' aria-label='First name' name='firstname' value=car.firstname)
           span#firstname-error
         .col
-          input.form-control(type='text' placeholder='Last name' aria-label='Last name' name='lastname')
+          input.form-control(type='text' placeholder='Last name' aria-label='Last name' name='lastname' value=car.lastname)
           span#lastname-error
         .col
           .col-auto
             label.visually-hidden(for='autoSizingSelect') Gender
-            select#autoSizingSelect.form-select(itemid='gender' name='gender')
+            select#autoSizingSelect.form-select(itemid='gender' name='gender' value=car.gender)
               option(selected='') Gender
-              option(value='Male' name='gender') Male
-              option(value='Female' name='gender') Female
+              option(value='Male' name='gender' selected=car.gender === 'Male' ) Male
+              option(value='Female' name='gender' selected=car.gender === 'Female') Female
             span#gender-error
       br
       .row.g-3
         .col
-          input#number-plate.form-control(type='text' placeholder='Number plate' aria-label='Number plate' name='numberplate')
+          input#number-plate.form-control(type='text' placeholder='Number plate' aria-label='Number plate' name='numberplate' value=car.numberplate)
           span#number-plate-error
         .col
-          input#color.form-control(type='text' placeholder='Color' aria-label='Color' name='color')
+          input#color.form-control(type='text' placeholder='Color' aria-label='Color' name='color' value=car.color)
           span#color-error
       br
       .row.g-3
         .col
           label(for='') Arrival time
-          input#arrival-time.form-control(type='time' placeholder='Arrival time' aria-label='Arrival time' name='arrivaltime')
+          input#arrival-time.form-control(type='time' placeholder='Arrival time' aria-label='Arrival time' name='arrivaltime' value=car.arrivaltime)
           span#arrival-time-error
         .col
           label(for='') Depature time
-          input#depature-time.form-control(type='time' placeholder='Depature Time' aria-label='Depature time' name='depaturetime')
+          input#depature-time.form-control(type='time' placeholder='Depature Time' aria-label='Depature time' name='depaturetime' value=car.departuretime)
           span#departure-time-error
       br
       .row.g-3
         .col
-          input#car-type.form-control(type='text' placeholder='Model' aria-label='Model' name='model')
+          input#car-type.form-control(type='text' placeholder='Model' aria-label='Model' name='model' value=car.model)
           span#car-type-error
         .col
-          input#date.form-control(type='date' placeholder='Date' aria-label='Date' name='date')
+          input#date.form-control(type='date' placeholder='Date' aria-label='Date' name='date' value=car.date)
           span#date-error
         .col
-          input.form-control(type='text' placeholder='contact' aria-label='contact' name='phone')
+          input.form-control(type='text' placeholder='contact' aria-label='contact' name='phone' value=car.phone)
           span#phone-error
       br
       .row.g-3
         .col
           .col-auto
             label.visually-hidden(for='autoSizingSelect') Period
-            select#autoSizingSelect.form-select(name='period')
+            select#autoSizingSelect.form-select(name='period' value=car.period)
               option(selected='') Period
-              option(value='Day') Day
-              option(value='Night') Night
-              option(value='Less than 3 hours') Less than 3 hours
+              option(value='Day' selected=car.period === 'Day') Day
+              option(value='Night' selected=car.period === 'Night') Night
+              option(value='Less than 3 hours' selected=car.period === 'Less than 3 hours') Less than 3 hours
         .col
           .col-auto
-            label.visually-hidden(for='autoSizingSelect')  Amount
-            select#autoSizingSelect.form-select(name='amount')
+            label.visually-hidden(for='autoSizingSelect') Amount
+            select#autoSizingSelect.form-select(name='amount' value=car.amount)
               option(selected='') Amount
-              option(value='2000') 2000
-              option(value='3000') 3000
+              option(value='2000' selected=car.amount === '2000') 2000
+              option(value='3000' selected=car.amount === '3000') 3000
         .col
-          input.form-control(type='text' placeholder='NIN' aria-label='NIN' name='nin')
+          input.form-control(type='text' placeholder='NIN' aria-label='NIN' name='nin' value=car.nin)
           span#nin-error
       br
       .row.g-3
         .col
-          input.form-control(type='number' placeholder='Identifier' aria-label='Identifier' min='1' max='200' name='number')
+          input.form-control(type='number' placeholder='Identifier' aria-label='Identifier' min='1' max='200' name='number' value=car.number)
           span#number-error
       br
       .col(style='text-align: center;')
@@ -134,20 +134,20 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
         .col
           h3 Car tyre clinic
           .form-check
-            input#flexCheckDefault.form-check-input(type='checkbox' value='Tire Pressure' name='tireclinic')
+            input#flexCheckDefault.form-check-input(type='checkbox' value='Tire Pressure' name='tireclinic[]' checked=car.tireclinic.includes('Tire Pressure'))
             label.form-check-label(for='flexCheckDefault')
               | tire pressure
           .form-check
-            input#flexCheckDefault.form-check-input(type='checkbox' value='Valves' name='tireclinic')
+            input#flexCheckDefault.form-check-input(type='checkbox' value='Valves' name='tireclinic[]' checked=car.tireclinic.includes('Valves'))
             label.form-check-label(for='flexCheckDefault')
               | Valves
           .form-check
-            input#flexCheckDefault.form-check-input(type='checkbox' value='Puncturefixing' name='tireclinic')
+            input#flexCheckDefault.form-check-input(type='checkbox' value='Puncturefixing' name='tireclinic[]' checked=car.tireclinic.includes('Puncturefixing'))
             label.form-check-label(for='flexCheckDefault')
               | puncture fixing
         .col
           h3 Battery Section
-          input#size.form-control(type='text' placeholder='Size' aria-label='Model' name='battery')
+          input#size.form-control(type='text' placeholder='Size' aria-label='Model' name='battery' value=car.battery)
           span#size-error
       br
       button.btn.btn-primary(type='submit') Submit
@@ -159,23 +159,6 @@ script(src='/script/script.js')
 script(src='/css/lib/bootstrap/js/bootstrap.js')
 script(src='/script/validate.js')
 script(src='/script/pscript.js')
-script.
-  // Format date as dd/mm/yyyy
-  function formatDate(dateStr) {
-    const date = new Date(dateStr);
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
-  }
-
-  // Prepare date before form submission
-  function prepareDate(event) {
-    const dateInput = document.getElementById('date');
-    const formattedDate = formatDate(dateInput.value);
-    dateInput.value = formattedDate;
-  }
-
 //
   <script>
   // Validating for NIN

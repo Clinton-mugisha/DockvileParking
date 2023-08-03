@@ -1,0 +1,42 @@
+/* parking.css */
+
+/* Center the table in the middle of the page */
+.table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Set a white background for the table */
+  .table {
+    max-width: 800px; /* Adjust the value to control the maximum width of the table */
+    width: 100%; /* Make the table responsive */
+    border-collapse: collapse; /* Optional: Remove spacing between table cells */
+    position: relative;
+    left: 30px;
+  }
+  
+  /* Reduce the width of the table cells to make the table smaller */
+  .table th,
+  .table td {
+    padding: 5px;
+    text-align: center;
+  }
+  
+  
+  /* Optional: Add some spacing between the table rows */
+  .table tbody tr:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  h1{
+    text-align: center;
+    color: aqua;
+  }
+  .search{
+    width: 264px;
+    position: absolute;
+    right: 10px;
+    
+    
+  }

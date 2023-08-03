@@ -8,6 +8,11 @@ router.get('/home', (req, res)=>{
     res.render('home.pug')
 });
 
+// Tables route
+router.get('/tables', (req, res)=>{
+    res.render('tables.pug')
+});
+
 // landing page route
 router.get('/landing', (req, res)=>{
     res.render('landingpage.pug')

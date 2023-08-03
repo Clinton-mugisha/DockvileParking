@@ -175,7 +175,7 @@ html { height: 100%;}
 .dropdown-menu.show {
     top: 0;
 }
-/*Fontawesome icons*/
+/* Fontawesome icons
 .nav.sidebar-nav li a::before {
     font-family: fontawesome;
     content: "\f12e";
@@ -186,28 +186,28 @@ html { height: 100%;}
 a[href*=""]::before {
   content: "\f015" !important;
 }
-a[href*="revenue.html"]::before {
+a[href*="revenue.pug"]::before {
   content: "\f129" !important;
 }
-a[href*="events.html"]::before {
+a[href*="events.pug"]::before {
   content: "\f073" !important;
 }
-a[href*="#events.html"]::before {
+a[href*="#events.pug"]::before {
   content: "\f073" !important;
 }
-a[href*="team.html"]::before {
+a[href*="team.pug"]::before {
   content: "\f0c0" !important;
 }
-a[href*="#works"]::before {
+a[href*="#works.pug"]::before {
   content: "\f0b1" !important;
 }
-a[href*="parking.html"]::before {
+a[href*="parking.pug"]::before {
   content: "\f0d1" !important;
 }
-a[href*="tireclinic.html"]::before {
+a[href*="tireclinic.pug"]::before {
   content: "\f03d" !important;
 }
-a[href*="rentingb.html"]::before {
+a[href*="rentingb.pug"]::before {
   content: "\f02d" !important;
 }
 a[href*="#art"]::before {
@@ -216,12 +216,12 @@ a[href*="#art"]::before {
 a[href*="#awards"]::before {
   content: "\f02e" !important;
 }
-a[href*="settings.html"]::before {
+a[href*="settings"]::before {
   content: "\f013" !important;
 }
-a[href*="email.html"]::before {
+a[href*="email"]::before {
   content: "\f086" !important;
-}
+} */
 
 /*-------------------------------*/
 /*       Hamburger-Cross         */

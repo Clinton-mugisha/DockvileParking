@@ -48,7 +48,7 @@ head
       span.hamb-middle
       span.hamb-bottom
 .container
-  .row(style='background-color:rgba(255, 255, 255, 0.5);\
+  .row(style='background-color:rgba(255, 255, 255, 0.2);\
   height: 525px;\
   width: 1470px;\
   display: flex;\
@@ -65,7 +65,7 @@ head
             |  us now!
           p.card-hover__text
             | Bellow is a table containing all the data of customers who have parked with us
-          a.card-hover__link(href='parkingtable.html')
+          a.card-hover__link(href='tables')
             span view table
             svg(fill='none' viewbox='0 0 24 24' stroke-width='1.5' stroke='currentColor')
               path(stroke-linecap='round' stroke-linejoin='round' d='M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3')
@@ -151,6 +151,10 @@ section(style='position: absolute; left: 712px; width: 507px; height: 350px; top
         h5 Revenue
         hr
         canvas#mylineChart
+section(style='position: absolute; left: 38px; width: 650px; height: 450px; top: 1500px;')
+  section(style='position: relative; width: 100%; height: 100%; bottom:5px;')
+    .card(style='width: 100%; height: 100%; background-color: rgb(240, 248, 255, 0.01);')
+      .card-body(style='height: 100%;')
 script(src='https://cdn.jsdelivr.net/npm/chart.js')
 script.
   const ctx = document.getElementById('myChart');

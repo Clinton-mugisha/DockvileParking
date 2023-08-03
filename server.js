@@ -10,6 +10,8 @@ const app = express();
 // importing homeRoutes
 const homeRoutes = require('./controllers/homeRoutes')
 const carRoutes = require('./controllers/carRoutes')
+const truckRoutes = require('./controllers/truckRoutes')
+
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -28,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // using imported routes
 app.use('/api', homeRoutes)
 app.use('/api', carRoutes);
+app.use('/api', truckRoutes);
 
 
 

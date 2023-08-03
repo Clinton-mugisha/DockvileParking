@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')    
 
-const carSchema = new mongoose.Schema({
+const truckSchema = new mongoose.Schema({
     firstname:{
         type: String,
         required: true, // this ensures that the field cannont be left empty
@@ -43,7 +43,7 @@ const carSchema = new mongoose.Schema({
 
     },
     date: {
-        type: String,
+        type: Date,
         required: true
     },
     period:{
@@ -54,7 +54,7 @@ const carSchema = new mongoose.Schema({
     amount: {
         type: Number,
         required: true,
-        enum: ['3000','2000']
+        enum: ['3000', '2000', '5000']
     },
     nin:{
         type: String,
@@ -79,4 +79,4 @@ const carSchema = new mongoose.Schema({
 
 })
 
-module.exports = mongoose.model('Car', carSchema)
+module.exports = mongoose.model('Truck', truckSchema)

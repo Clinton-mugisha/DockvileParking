@@ -175,7 +175,7 @@ html { height: 100%;}
 .dropdown-menu.show {
     top: 0;
 }
-/*Fontawesome icons*/
+/* Fontawesome icons
 .nav.sidebar-nav li a::before {
     font-family: fontawesome;
     content: "\f12e";
@@ -221,7 +221,7 @@ a[href*="settings.html"]::before {
 }
 a[href*="email.html"]::before {
   content: "\f086" !important;
-}
+} */
 
 /*-------------------------------*/
 /*       Hamburger-Cross         */
