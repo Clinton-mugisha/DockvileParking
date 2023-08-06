@@ -2,7 +2,14 @@ const express = require('express');
 const Taxi = require('../models/taximodel')
 const router = express.Router();
 const { calculateTotalAmount } = require('../controllers/utils');
+const session = require('express-session');
 
+// Use the session middleware
+router.use(session({
+  secret: '123', // Replace with your own secret key
+  resave: false,
+  saveUninitialized: true
+}));
 
 
 router.post('/regtaxi', async(req, res) => {
@@ -79,22 +86,52 @@ router.post('/taxi/edit', async (req, res) => {
 })
 
 router.get('/taxilistt', async (req, res) => {
-    try{
-        let items= await Taxi.find(); // .find is a moongose function that finds all the stuff from the model
-        let grandTotal = 0;
-for (const taxi of items) {
-  const total = (taxi.valves || 0) + (taxi.tirepressure || 0) + (taxi.puncturefixing || 0);
-  grandTotal += total;
-}
-        res.render('taxilistt',{taxis:items, grandTotal})
+    try {
+      let items = await Taxi.find();
+  
+      // Calculate the sum of valves, puncturefixing, and tirepressure for each document
+      let amounts = await Taxi.aggregate([
+        {
+          $project: {
+            totalAmount: { $sum: ['$valves', '$puncturefixing', '$tirepressure'] },
+          },
+        },
+        {
+          $group: {
+            _id: null,
+            taxi: { $sum: '$totalAmount' },
+            taxis: { $push: '$$ROOT' },
+          },
+        },
+      ]);
+  
+      // Extract the grandTotal from the aggregated result
+      let taxi = amounts.length > 0 ? amounts[0].taxi : 0;
+      req.session.taxi = taxi;
+      res.render('taxilistt', { taxis: items, taxi });
+    } catch (error) {
+      return res.status(400).send({ message: 'sorry could not get employees' });
+      console.log(error);
+    }
+  });
+
+// router.get('/taxilistt', async (req, res) => {
+//     try{
+//         let items= await Taxi.find(); // .find is a moongose function that finds all the stuff from the model
+//         let grandTotal = 0;
+// for (const taxi of items) {
+//   const total = (taxi.valves || 0) + (taxi.tirepressure || 0) + (taxi.puncturefixing || 0);
+//   grandTotal += total;
+// }
+//         res.render('taxilistt',{taxis:items, grandTotal})
         
         
-    }
-    catch(error){
-        return res.status(400).send({message:'sorry could not get customers'});
-        console.log(error);
-    }
-})
+//     }
+//     catch(error){
+//         return res.status(400).send({message:'sorry could not get customers'});
+//         console.log(error);
+//     }
+// })
 
 
 module.exports = router;

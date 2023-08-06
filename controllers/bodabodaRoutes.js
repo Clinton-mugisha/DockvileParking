@@ -2,7 +2,14 @@ const express = require('express');
 const Bodaboda = require('../models/bodabodamodel')
 const router = express.Router();
 const { calculateTotalAmount } = require('../controllers/utils');
+const session = require('express-session');
 
+// Use the session middleware
+router.use(session({
+  secret: '123', // Replace with your own secret key
+  resave: false,
+  saveUninitialized: true
+}));
 
 
 router.post('/regbodaboda', async(req, res) => {
@@ -78,23 +85,54 @@ router.post('/bodaboda/edit', async (req, res) => {
     }
 })
 
+
 router.get('/bodabodalistt', async (req, res) => {
-    try{
-        let items= await Bodaboda.find(); // .find is a moongose function that finds all the stuff from the model
-        let grandTotal = 0;
-for (const bodaboda of items) {
-  const total = (bodaboda.valves || 0) + (bodaboda.tirepressure || 0) + (bodaboda.puncturefixing || 0);
-  grandTotal += total;
-}
-        res.render('bodabodalistt',{bodabodas:items, grandTotal})
+    try {
+      let items = await Bodaboda.find();
+  
+      // Calculate the sum of valves, puncturefixing, and tirepressure for each document
+      let amounts = await Bodaboda.aggregate([
+        {
+          $project: {
+            totalAmount: { $sum: ['$valves', '$puncturefixing', '$tirepressure'] },
+          },
+        },
+        {
+          $group: {
+            _id: null,
+            bodaboda: { $sum: '$totalAmount' },
+            bodabodas: { $push: '$$ROOT' },
+          },
+        },
+      ]);
+  
+      // Extract the grandTotal from the aggregated result
+      let bodaboda = amounts.length > 0 ? amounts[0].bodaboda : 0;
+      req.session.bodaboda = bodaboda;
+      res.render('bodabodalistt', { bodabodas: items, bodaboda });
+    } catch (error) {
+      return res.status(400).send({ message: 'sorry could not get employees' });
+      console.log(error);
+    }
+  });
+
+// router.get('/bodabodalistt', async (req, res) => {
+//     try{
+//         let items= await Bodaboda.find(); // .find is a moongose function that finds all the stuff from the model
+//         let grandTotal = 0;
+// for (const bodaboda of items) {
+//   const total = (bodaboda.valves || 0) + (bodaboda.tirepressure || 0) + (bodaboda.puncturefixing || 0);
+//   grandTotal += total;
+// }
+//         res.render('bodabodalistt',{bodabodas:items, grandTotal})
         
         
-    }
-    catch(error){
-        return res.status(400).send({message:'sorry could not get customers'});
-        console.log(error);
-    }
-})
+//     }
+//     catch(error){
+//         return res.status(400).send({message:'sorry could not get customers'});
+//         console.log(error);
+//     }
+// })
 
 
 

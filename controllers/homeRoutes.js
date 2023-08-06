@@ -22,12 +22,17 @@ router.get('/home', async (req, res, next) => {
       const totalCoasterAmount = await calculateTotalAmount('coaster');
       const grandTotal = req.session.grandTotal;
       const coaster= req.session.coaster;
+      const bodaboda= req.session.bodaboda;
+      const taxi= req.session.taxi;
+      const truck= req.session.truck;
 
 
 
   
       // Calculate the overall total
       const overallTotal = totalCarAmount + totalTruckAmount + totalBodabodaAmount + totalTaxiAmount + totalCoasterAmount;
+      const total = grandTotal + coaster+ bodaboda+ taxi + truck;
+      const totalr = overallTotal + total
   
       res.render('home', {
         totalCarAmount,
@@ -36,6 +41,11 @@ router.get('/home', async (req, res, next) => {
         totalTaxiAmount,
         grandTotal,
         coaster,
+        taxi,
+        totalr,
+        truck,
+        total,
+        bodaboda,
         totalCoasterAmount,
         overallTotal, // Pass the overall total to the template
 

@@ -2,7 +2,14 @@ const express = require('express');
 const Truck = require('../models/truckmodel')
 const router = express.Router();
 const { calculateTotalAmount } = require('../controllers/utils');
+const session = require('express-session');
 
+// Use the session middleware
+router.use(session({
+  secret: '123', // Replace with your own secret key
+  resave: false,
+  saveUninitialized: true
+}));
 
 
 router.post('/regtruck', async(req, res) => {
@@ -79,22 +86,54 @@ router.post('/truck/edit', async (req, res) => {
 
 
 router.get('/trucklistt', async (req, res) => {
-    try{
-        let items= await Truck.find(); // .find is a moongose function that finds all the stuff from the model
-        let grandTotal = 0;
-for (const truck of items) {
-  const total = (truck.valves || 0) + (truck.tirepressure || 0) + (truck.puncturefixing || 0);
-  grandTotal += total;
-}
-        res.render('trucklistt',{trucks:items, grandTotal})
+    try {
+      let items = await Truck.find();
+  
+      // Calculate the sum of valves, puncturefixing, and tirepressure for each document
+      let amounts = await Truck.aggregate([
+        {
+          $project: {
+            totalAmount: { $sum: ['$valves', '$puncturefixing', '$tirepressure'] },
+          },
+        },
+        {
+          $group: {
+            _id: null,
+            truck: { $sum: '$totalAmount' },
+            trucks: { $push: '$$ROOT' },
+          },
+        },
+      ]);
+  
+      // Extract the grandTotal from the aggregated result
+      let truck = amounts.length > 0 ? amounts[0].truck : 0;
+      req.session.truck = truck;
+      res.render('trucklistt', { trucks: items, truck });
+    } catch (error) {
+      return res.status(400).send({ message: 'sorry could not get employees' });
+      console.log(error);
+    }
+  });
+
+
+// router.get('/trucklistt', async (req, res) => {
+//     try{
+//         let items= await Truck.find(); // .find is a moongose function that finds all the stuff from the model
+//         let trucks = 0;
+// for (const truck of items) {
+//   const total = (truck.valves || 0) + (truck.tirepressure || 0) + (truck.puncturefixing || 0);
+//   trucks += total;
+// }
+// req.session.trucks = trucks;
+//         res.render('trucklistt',{trucks:items, trucks})
         
         
-    }
-    catch(error){
-        return res.status(400).send({message:'sorry could not get customers'});
-        console.log(error);
-    }
-})
+//     }
+//     catch(error){
+//         return res.status(400).send({message:'sorry could not get customers'});
+//         console.log(error);
+//     }
+// })
 
 module.exports = router;
 
