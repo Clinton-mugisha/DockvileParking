@@ -137,17 +137,20 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
             input#flexCheckDefault.form-check-input(type='checkbox' value='Tire Pressure' name='tireclinic[]' checked=car.tireclinic.includes('Tire Pressure'))
             label.form-check-label(for='flexCheckDefault')
               | tire pressure
+            input(type='number' placeholder='500' aria-label='Identifier' name='tirepressure' value=car.tirepressure)
           .form-check
             input#flexCheckDefault.form-check-input(type='checkbox' value='Valves' name='tireclinic[]' checked=car.tireclinic.includes('Valves'))
             label.form-check-label(for='flexCheckDefault')
               | Valves
+            input(type='number' placeholder='5000' aria-label='Identifier' name='valves' value=car.valves)
           .form-check
-            input#flexCheckDefault.form-check-input(type='checkbox' value='Puncturefixing' name='tireclinic[]' checked=car.tireclinic.includes('Puncturefixing'))
+            input#flexCheckDefault.form-check-input(type='checkbox' value='Puncture Fixing' name='tireclinic[]' checked=car.tireclinic.includes('Puncture Fixing'))
             label.form-check-label(for='flexCheckDefault')
               | puncture fixing
+            input(type='number' placeholder='5000' aria-label='Identifier' name='puncturefixing' value=car.puncturefixing)
         .col
           h3 Battery Section
-          input#size.form-control(type='text' placeholder='Size' aria-label='Model' name='battery' value=car.battery)
+          input#size.form-control(type='text' placeholder='Size' aria-label='Model' name='battery' value=car.battery )
           span#size-error
       br
       button.btn.btn-primary(type='submit') Submit

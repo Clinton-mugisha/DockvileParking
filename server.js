@@ -42,6 +42,7 @@ app.use('/api', coasterRoutes);
 
 
 
+
 // running the server on a specific port (3000)
 // This should always be the last line in the server file
 app.listen(3000, () => console.log('listening on port 3000'));

@@ -1,7 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const { calculateTotalAmount } = require('../controllers/utils');
+const parkingListTRoute = require('../controllers/carRoutes');
+const session = require('express-session');
 
+// Use the session middleware
+router.use(session({
+  secret: '123', // Replace with your own secret key
+  resave: false,
+  saveUninitialized: true
+}));
 
 
 router.get('/home', async (req, res, next) => {
@@ -12,6 +20,11 @@ router.get('/home', async (req, res, next) => {
       const totalBodabodaAmount = await calculateTotalAmount('bodaboda');
       const totalTaxiAmount = await calculateTotalAmount('taxi');
       const totalCoasterAmount = await calculateTotalAmount('coaster');
+      const grandTotal = req.session.grandTotal;
+      const coaster= req.session.coaster;
+
+
+
   
       // Calculate the overall total
       const overallTotal = totalCarAmount + totalTruckAmount + totalBodabodaAmount + totalTaxiAmount + totalCoasterAmount;
@@ -21,13 +34,18 @@ router.get('/home', async (req, res, next) => {
         totalTruckAmount,
         totalBodabodaAmount,
         totalTaxiAmount,
+        grandTotal,
+        coaster,
         totalCoasterAmount,
         overallTotal, // Pass the overall total to the template
+
       });
     } catch (error) {
       next(error);
     }
   });
+
+  router.use(parkingListTRoute);
 
 
 // // hello route
@@ -38,6 +56,10 @@ router.get('/home', async (req, res, next) => {
 // Tables route
 router.get('/tables', (req, res)=>{
     res.render('tables.pug')
+});
+// Tables route
+router.get('/tablest', (req, res)=>{
+    res.render('tablest.pug')
 });
 
 // landing page route

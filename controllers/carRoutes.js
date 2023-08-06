@@ -2,7 +2,14 @@ const express = require('express');
 const Car = require('../models/carmodel')
 const router = express.Router();
 const { calculateTotalAmount } = require('../controllers/utils');
+const session = require('express-session');
 
+// Use the session middleware
+router.use(session({
+  secret: '123', // Replace with your own secret key
+  resave: false,
+  saveUninitialized: true
+}));
 
 
 router.post('/regcar', async(req, res) => {
@@ -78,6 +85,54 @@ router.post('/car/edit', async (req, res) => {
     }
 })
 
+
+router.get('/parkinglistt', async (req, res) => {
+    try {
+      let items = await Car.find();
+  
+      // Calculate the sum of valves, puncturefixing, and tirepressure for each document
+      let amounts = await Car.aggregate([
+        {
+          $project: {
+            totalAmount: { $sum: ['$valves', '$puncturefixing', '$tirepressure'] },
+          },
+        },
+        {
+          $group: {
+            _id: null,
+            grandTotal: { $sum: '$totalAmount' },
+            cars: { $push: '$$ROOT' },
+          },
+        },
+      ]);
+  
+      // Extract the grandTotal from the aggregated result
+      let grandTotal = amounts.length > 0 ? amounts[0].grandTotal : 0;
+      req.session.grandTotal = grandTotal;
+      res.render('parkinglistt', { cars: items, grandTotal });
+    } catch (error) {
+      return res.status(400).send({ message: 'sorry could not get employees' });
+      console.log(error);
+    }
+  });
+  
+// router.get('/parkinglistt', async (req, res) => {
+//     try{
+//         let items= await Car.find(); // .find is a moongose function that finds all the stuff from the model
+//         let grandTotal = 0;
+// for (const car of items) {
+//   const total = (car.valves || 0) + (car.tirepressure || 0) + (car.puncturefixing || 0);
+//   grandTotal += total;
+// }
+//         res.render('parkinglistt',{cars:items, grandTotal})
+        
+        
+//     }
+//     catch(error){
+//         return res.status(400).send({message:'sorry could not get customers'});
+//         console.log(error);
+//     }
+// })
 
 module.exports = router;
 

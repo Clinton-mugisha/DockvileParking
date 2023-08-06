@@ -138,14 +138,17 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
             input#flexCheckDefault.form-check-input(type='checkbox' value='Tire Pressure' name='tireclinic')
             label.form-check-label(for='flexCheckDefault')
               | tire pressure
+            input(type='number' placeholder='500' aria-label='Identifier' name='tirepressure')
           .form-check
             input#flexCheckDefault.form-check-input(type='checkbox' value='Valves' name='tireclinic')
             label.form-check-label(for='flexCheckDefault')
               | Valves
+            input(type='number' placeholder='5000' aria-label='Identifier' name='valves')
           .form-check
-            input#flexCheckDefault.form-check-input(type='checkbox' value='Puncturefixing' name='tireclinic')
+            input#flexCheckDefault.form-check-input(type='checkbox' value='Puncture Fixing' name='tireclinic')
             label.form-check-label(for='flexCheckDefault')
               | puncture fixing
+            input(type='number' placeholder='5000' aria-label='Identifier' name='puncturefixing')
         .col
           h3 Battery Section
           input#size.form-control(type='text' placeholder='Size' aria-label='Model' name='battery' )

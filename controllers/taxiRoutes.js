@@ -78,6 +78,24 @@ router.post('/taxi/edit', async (req, res) => {
     }
 })
 
+router.get('/taxilistt', async (req, res) => {
+    try{
+        let items= await Taxi.find(); // .find is a moongose function that finds all the stuff from the model
+        let grandTotal = 0;
+for (const taxi of items) {
+  const total = (taxi.valves || 0) + (taxi.tirepressure || 0) + (taxi.puncturefixing || 0);
+  grandTotal += total;
+}
+        res.render('taxilistt',{taxis:items, grandTotal})
+        
+        
+    }
+    catch(error){
+        return res.status(400).send({message:'sorry could not get customers'});
+        console.log(error);
+    }
+})
+
 
 module.exports = router;
 

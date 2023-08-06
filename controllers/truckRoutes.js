@@ -78,5 +78,23 @@ router.post('/truck/edit', async (req, res) => {
 })
 
 
+router.get('/trucklistt', async (req, res) => {
+    try{
+        let items= await Truck.find(); // .find is a moongose function that finds all the stuff from the model
+        let grandTotal = 0;
+for (const truck of items) {
+  const total = (truck.valves || 0) + (truck.tirepressure || 0) + (truck.puncturefixing || 0);
+  grandTotal += total;
+}
+        res.render('trucklistt',{trucks:items, grandTotal})
+        
+        
+    }
+    catch(error){
+        return res.status(400).send({message:'sorry could not get customers'});
+        console.log(error);
+    }
+})
+
 module.exports = router;
 

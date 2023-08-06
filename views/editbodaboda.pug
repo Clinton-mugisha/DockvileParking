@@ -136,15 +136,18 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
           .form-check
             input#flexCheckDefault.form-check-input(type='checkbox' value='Tire Pressure' name='tireclinic[]' checked=bodaboda.tireclinic.includes('Tire Pressure'))
             label.form-check-label(for='flexCheckDefault')
-              | tire pressure
+              | tire Pressure
+            input(type='number' placeholder='500' aria-label='Identifier' name='tirepressure' value=bodaboda.tirepressure)
           .form-check
             input#flexCheckDefault.form-check-input(type='checkbox' value='Valves' name='tireclinic[]' checked=bodaboda.tireclinic.includes('Valves'))
             label.form-check-label(for='flexCheckDefault')
               | Valves
+            input(type='number' placeholder='5000' aria-label='Identifier' name='valves' value=bodaboda.valves)
           .form-check
-            input#flexCheckDefault.form-check-input(type='checkbox' value='Puncturefixing' name='tireclinic[]' checked=bodaboda.tireclinic.includes('Puncturefixing'))
+            input#flexCheckDefault.form-check-input(type='checkbox' value='Puncture Fixing' name='tireclinic[]' checked=bodaboda.tireclinic.includes('Puncture Fixing'))
             label.form-check-label(for='flexCheckDefault')
               | puncture fixing
+            input(type='number' placeholder='5000' aria-label='Identifier' name='puncturefixing' value=bodaboda.puncturefixing)
         .col
           h3 Battery Section
           input#size.form-control(type='text' placeholder='Size' aria-label='Model' name='battery' value=bodaboda.battery)

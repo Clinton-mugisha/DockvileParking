@@ -75,6 +75,16 @@ const coasterSchema = new mongoose.Schema({
     },
     battery: {
         type: String
+    },
+    valves:{
+        type: Number,
+        
+    },
+    puncturefixing:{
+        type: Number,
+    },
+    tirepressure:{
+        type: Number,
     }
 
 })
