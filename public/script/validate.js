@@ -9,7 +9,8 @@ const validate=(event)=>{
     let arrivalTime = document.getElementById("arrival-time");
     let departureTime = document.getElementById("departure-time");
     let date = document.getElementById("date");
-    let period = document.getElementById("period");
+    const gender = document.getElementById("gender");
+    let period =  document.getElementById("period");
     let amount = document.getElementById("amount");
     let carType = document.getElementById("car-type")
 
@@ -23,8 +24,9 @@ let numberPlateError = document.getElementById("number-plate-error");
     let arrivalTimeError = document.getElementById("arrival-time-error");
     let departureTimeError = document.getElementById("departure-time-error");
     let dateError = document.getElementById("date-error");
-    let periodError = document.getElementById("period-error");
+    const periodError = document.getElementById("period-error");
     let amountError = document.getElementById("amount-error");
+    let genderError = document.getElementById("gender-error");
     
 
 let error=0
@@ -213,16 +215,17 @@ if(error > 0){
     }
   
     // Validation for period
-    if (period.value === "Period") {
-      period.style.border = "1px solid red";
-      periodError.textContent = "Please select a period";
-      periodError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
-      period.focus();
-      error++;
-    } else {
-      period.style.border = "1px solid green";
-      periodError.textContent = "";
-    }
+if (period.value === "Period") {
+  period.style.border = "1px solid red";
+  periodError.textContent = "Please select a period";
+  periodError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
+  period.focus();
+  error++;
+} else {
+  period.style.border = "1px solid green";
+  periodError.textContent = "";
+}
+
   
     // Validation for amount
     if (amount.value === "Amount") {
@@ -235,6 +238,31 @@ if(error > 0){
       amount.style.border = "1px solid green";
       amountError.textContent = "";
     }
+// Validation for date
+if (date.value.trim() === "") {
+  date.style.border = "1px solid red";
+  dateError.textContent = "Date is required";
+  dateError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
+  date.focus();
+  error++;
+} else {
+  date.style.border = "1px solid green";
+  dateError.textContent = "";
+}
+
+// Validation for gender
+if (gender.value === "Gender") {
+  gender.style.border = "1px solid red";
+  genderError.textContent = "Please select a gender";
+  genderError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
+  gender.focus();
+  error++;
+} else {
+  gender.style.border = "1px solid green";
+  genderError.textContent = "";
+}
+
+
 
 
 

@@ -1,6 +1,7 @@
 const express = require('express');
 const Car = require('../models/carmodel')
 const router = express.Router();
+const { calculateTotalAmount } = require('../controllers/utils');
 
 
 
@@ -23,7 +24,14 @@ router.post('/regcar', async(req, res) => {
     router.get('/parkinglist', async (req, res) => {
         try{
             let items= await Car.find(); // .find is a moongose function that finds all the stuff from the model
-            res.render('parkinglist',{cars:items})
+            let amount = await Car.aggregate([
+                {'$group': {_id: '$all',
+            totalamount: {$sum: '$amount'}
+        }}
+//let ages =group{totalAge{sum}}
+            ])  
+            res.render('parkinglist',{cars:items, custotal:amount[0].totalamount })
+            
             
         }
         catch(error){
@@ -48,11 +56,23 @@ router.post('/regcar', async(req, res) => {
 // it involves a get and a post
 router.get('/car/edit/:id', async (req, res) => {
     try{
-        const emp = await Car.findOne({_id: req.params.id}); //params means its passing by the parameter
-        res.render('editcar', {car: emp})
+        const cr = await Car.findOne({_id: req.params.id}); //params means its passing by the parameter
+        res.render('editcar', {car: cr})
 
     }catch(error){
         res.status(400).send('Could not find customer in database')
+        console.log(error)
+
+    }
+})
+//this is our post route for the newly editted data (updating)
+router.post('/car/edit', async (req, res) => {
+    try{
+        await Car.findOneAndUpdate({_id: req.query.id},req.body);
+        res.redirect('/api/parkinglist')
+
+    }catch(error){
+        res.status(400).send('Could not edit car data') 
         console.log(error)
 
     }

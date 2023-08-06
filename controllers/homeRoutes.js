@@ -1,12 +1,39 @@
 const express = require('express');
 const router = express.Router();
+const { calculateTotalAmount } = require('../controllers/utils');
 
 
 
-// hello route
-router.get('/home', (req, res)=>{
-    res.render('home.pug')
-});
+router.get('/home', async (req, res, next) => {
+    try {
+      // Calculate the total amounts for each collection
+      const totalCarAmount = await calculateTotalAmount('car');
+      const totalTruckAmount = await calculateTotalAmount('truck');
+      const totalBodabodaAmount = await calculateTotalAmount('bodaboda');
+      const totalTaxiAmount = await calculateTotalAmount('taxi');
+      const totalCoasterAmount = await calculateTotalAmount('coaster');
+  
+      // Calculate the overall total
+      const overallTotal = totalCarAmount + totalTruckAmount + totalBodabodaAmount + totalTaxiAmount + totalCoasterAmount;
+  
+      res.render('home', {
+        totalCarAmount,
+        totalTruckAmount,
+        totalBodabodaAmount,
+        totalTaxiAmount,
+        totalCoasterAmount,
+        overallTotal, // Pass the overall total to the template
+      });
+    } catch (error) {
+      next(error);
+    }
+  });
+
+
+// // hello route
+// router.get('/home', (req, res)=>{
+//     res.render('home.pug')
+// });
 
 // Tables route
 router.get('/tables', (req, res)=>{
@@ -28,6 +55,9 @@ router.get('/parking', (req, res)=>{
 router.get('/taxi', (req, res)=>{
     res.render('taxiform.pug')
 });
+router.get('/truck', (req, res)=>{
+    res.render('truckform.pug')
+});
 
 // car form route
 router.get('/car', (req, res)=>{
@@ -40,14 +70,12 @@ router.get('/coaster', (req, res)=>{
 });
 
 // car form rout
-router.get('/boda', (req, res)=>{
+router.get('/bodaboda', (req, res)=>{
     res.render('bodabodaform.pug')
 });
 
 // car form rout
-router.get('/truck', (req, res)=>{
-    res.render('truckform.pug')
-});
+
 
 // signup route
 router.get('/sign', (req, res)=>{
@@ -79,8 +107,8 @@ router.get('/team', (req, res)=>{
     res.render('team.pug')
 });
 // tireclinic route
-router.get('/tire', (req, res)=>{
-    res.render('tire.pug')
+router.get('/tireclinic', (req, res)=>{
+    res.render('tireclinic.pug')
 });
 
 module.exports = router

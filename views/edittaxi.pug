@@ -1,0 +1,161 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  title Taxi
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/css/tether.min.css')
+  link(rel='stylesheet' href='/mycss/home.css')
+  link(rel='stylesheet' href='/css/lib/bootstrap/css/bootstrap.css')
+// partial:index.partial.html
+#wrapper
+  .overlay
+  // Sidebar
+  nav#sidebar-wrapper.navbar.navbar-inverse.fixed-top(role='navigation')
+    ul.nav.sidebar-nav
+      .sidebar-header
+        .sidebar-brand
+          h4(style='color: antiquewhite;') Dockvile Parking
+      li
+        a(href='home') Dashboard
+      li
+        a(href='revenue') Revenue
+      li
+        a(href='events') Events
+      li
+        a(href='team') Team
+      li.dropdown
+        a.dropdown-toggle(href='#works' data-toggle='dropdown')
+          | Services
+          span.caret
+        ul.dropdown-menu.animated.fadeInLeft(role='menu')
+          .dropdown-header Services Offered
+          li
+            a(href='parking') Parking
+          li
+            a(href='tire') Tire Clinic
+          li
+            a(href='renting') Renting Batteries
+      li
+        a(href='settings') Settings
+      li
+        a(href='email') Email
+  // /#sidebar-wrapper
+  // Page Content
+  #page-content-wrapper
+    button.hamburger.animated.fadeInLeft.is-closed(type='button' data-toggle='offcanvas')
+      span.hamb-top
+      span.hamb-middle
+      span.hamb-bottom
+// /#wrapper
+// partial
+// car form
+div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height: 900px; width: 752px;opacity:80%;top: 60%; left: 50%;transform: translate(-50%, -50%);')
+  div(style='position: relative; width: 703px; height: 674px; left: 20px; top: 20px;')
+    form(name='registration' method='POST' action='/api/taxi/edit?id='+taxi._id onsubmit=' return validate(event);')
+      .row.g-3
+        .col(style='text-align: center;')
+          h1 Taxi Form
+      .row.g-3
+        .col
+          input.form-control(type='text' placeholder='First name' aria-label='First name' name='firstname' value=taxi.firstname)
+          span#firstname-error
+        .col
+          input.form-control(type='text' placeholder='Last name' aria-label='Last name' name='lastname' value=taxi.lastname)
+          span#lastname-error
+        .col
+          .col-auto
+            label.visually-hidden(for='autoSizingSelect') Gender
+            select#autoSizingSelect.form-select(itemid='gender' name='gender' value=taxi.gender)
+              option(selected='') Gender
+              option(value='Male' name='gender' selected=taxi.gender === 'Male') Male
+              option(value='Female' name='gender' selected=taxi.gender === 'Female') Female
+            span#gender-error
+      br
+      .row.g-3
+        .col
+          input#number-plate.form-control(type='text' placeholder='Number plate' aria-label='Number plate' name='numberplate' value=taxi.numberplate)
+          span#number-plate-error
+        .col
+          input#color.form-control(type='text' placeholder='Color' aria-label='Color' name='color' value=taxi.color)
+          span#color-error
+      br
+      .row.g-3
+        .col
+          label(for='') Arrival time
+          input#arrival-time.form-control(type='time' placeholder='Arrival time' aria-label='Arrival time' name='arrivaletime' value=taxi.arrivaltime)
+          span#arrival-time-error
+        .col
+          label(for='') Depature time
+          input#depature-time.form-control(type='time' placeholder='Depature Time' aria-label='Depature time' name='departuretime' value=taxi.departuretime)
+          span#departure-time-error
+      br
+      .row.g-3
+        .col
+          input#car-type.form-control(type='text' placeholder='Model' aria-label='Model' name='model' value=taxi.model)
+          span#car-type-error
+        .col
+          input#date.form-control(type='date' placeholder='Date' aria-label='Date' name='date' value=taxi.date)
+          span#date-error
+        .col
+          input.form-control(type='text' placeholder='contact' aria-label='contact' name='phone' value=taxi.phone)
+          span#phone-error
+      br
+      .row.g-3
+        .col
+          .col-auto
+            label.visually-hidden(for='autoSizingSelect') Period
+            select#autoSizingSelect.form-select(name='period' value=taxi.period)
+              option(selected='') Period
+              option(value='Day' selected=taxi.period === 'Day') Day
+              option(value='Night' selected=taxi.period === 'Night') Night
+              option(value='Less than 3 hours' selected=taxi.period === 'Less than 3 hours') Less than 3 hours
+        .col
+          .col-auto
+            label.visually-hidden(for='autoSizingSelect')  Amount
+            select#autoSizingSelect.form-select(name='amount' value=taxi.amount)
+              option(selected='') Amount
+              option(value='2000' selected=taxi.amount === '2000') 2000
+              option(value='3000'  selected=taxi.amount === '3000') 3000
+        .col
+          input.form-control(type='text' placeholder='NIN' aria-label='NIN' name='nin' value=taxi.nin)
+          span#nin-error
+      br
+      .row.g-3
+        .col
+          input.form-control(type='number' placeholder='Identifier' aria-label='Identifier' min='1' max='200' name='number' value=taxi.number)
+          span#number-error
+      br
+      .col(style='text-align: center;')
+        h1 Other Services
+        br
+      .row.g-3
+        .col
+          h3 Car tyre clinic
+          .form-check
+            input#flexCheckDefault.form-check-input(type='checkbox' value='Tire Pressure' name='tireclinic[]' checked=taxi.tireclinic.includes('Tire Pressure'))
+            label.form-check-label(for='flexCheckDefault')
+              | tire pressure
+          .form-check
+            input#flexCheckDefault.form-check-input(type='checkbox' value='Valves' name='tireclinic[]' checked=taxi.tireclinic.includes('Valves'))
+            label.form-check-label(for='flexCheckDefault')
+              | Valves
+          .form-check
+            input#flexCheckDefault.form-check-input(type='checkbox' value='Puncture Fixing' name='tireclinic[]' checked=taxi.tireclinic.includes('puncture fixing'))
+            label.form-check-label(for='flexCheckDefault')
+              | puncture fixing
+        .col
+          h3 Battery Section
+          input#size.form-control(type='text' placeholder='Size' aria-label='Model' name='battery' value=taxi.battery)
+          span#size-error
+      br
+      button.btn.btn-primary(type='submit') Submit
+script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js')
+script(src='/script/script.js')
+script(src='/css/lib/bootstrap/js/bootstrap.js')
+script(src='/script/validate.js')
+script(src='/script/pscript.js')

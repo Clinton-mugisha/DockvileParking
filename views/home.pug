@@ -50,7 +50,7 @@ head
 .container
   .row(style='background-color:rgba(255, 255, 255, 0.2);\
   height: 525px;\
-  width: 1470px;\
+  width: 1143px;\
   display: flex;\
   position: absolute;\
   top: 6px;\
@@ -86,7 +86,7 @@ head
           p.card-hover__text
             | Bellow is a table containing all the data of customers who have recieved tire
             | clinic services
-          a.card-hover__link(href='tireclinict.html')
+          a.card-hover__link(href='tablest')
             span view table
             svg(fill='none' viewbox='0 0 24 24' stroke-width='1.5' stroke='currentColor')
               path(stroke-linecap='round' stroke-linejoin='round' d='M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3')
@@ -107,7 +107,7 @@ head
           p.card-hover__text
             | Bellow is a table containing all the data of customers who have rented a batery
             | for there automobiles
-          a.card-hover__link(href='batteryr.html')
+          a.card-hover__link(href='batteryr')
             span view table
             svg(fill='none' viewbox='0 0 24 24' stroke-width='1.5' stroke='currentColor')
               path(stroke-linecap='round' stroke-linejoin='round' d='M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3')
@@ -118,25 +118,25 @@ head
             |  Table 
             span now
         img(src='/images/battery.jpeg' alt='')
-    // 4th card
-    div(style='position: relative; left: 170px; top: 34px;')
-      .card-hover
-        .card-hover__content
-          h3.card-hover__title
-            | Sign
-            span Off
-          p.card-hover__text Bellow is a table containing all the data of customers who are signing out
-          a.card-hover__link(href='signoff.html')
-            span view table
-            svg(fill='none' viewbox='0 0 24 24' stroke-width='1.5' stroke='currentColor')
-              path(stroke-linecap='round' stroke-linejoin='round' d='M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3')
-        .card-hover__extra
-          h4
-            | View
-            span  sigoff
-            |  Table 
-            span now
-        img(src='/images/transac.jpeg' alt='')
+    //- // 4th card
+    //- div(style='position: relative; left: 170px; top: 34px;')
+    //-   .card-hover
+    //-     .card-hover__content
+    //-       h3.card-hover__title
+    //-         | Sign
+    //-         span Off
+    //-       p.card-hover__text Bellow is a table containing all the data of customers who are signing out
+    //-       a.card-hover__link(href='signoff.html')
+    //-         span view table
+    //-         svg(fill='none' viewbox='0 0 24 24' stroke-width='1.5' stroke='currentColor')
+    //-           path(stroke-linecap='round' stroke-linejoin='round' d='M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3')
+    //-     .card-hover__extra
+    //-       h4
+    //-         | View
+    //-         span  sigoff
+    //-         |  Table 
+    //-         span now
+    //-     img(src='/images/transac.jpeg' alt='')
 section(style='position: absolute; left: 38px; width: 650px; height: 450px; top: 542px;')
   section(style='position: relative; width: 100%; height: 100%; bottom:5px;')
     .card(style='width: 100%; height: 100%; background-color: rgb(240, 248, 255, 0.8);')
@@ -151,6 +151,43 @@ section(style='position: absolute; left: 712px; width: 507px; height: 350px; top
         h5 Revenue
         hr
         canvas#mylineChart
+section(style='position: absolute; left: 1320px; width: 300px; height: 270px; top: 20px;')
+  section(style=' position: relative; width: 100%; height: 100%; bottom:5px;')
+    .card(style='width: 100%; height: 100%; background-color: rgb(240, 248, 255, 0.6); ')
+      .card-body(style='height: 100%;')
+        h5  Parking Total
+        hr
+        h5 Car: #{totalCarAmount}
+        h5 Truck: #{totalTruckAmount}
+        h5 Bodaboda: #{totalBodabodaAmount} 
+        h5 Taxi: #{totalTaxiAmount} 
+        h5 Coaster: #{totalCoasterAmount} 
+        h5(style='float: right;') Total: #{overallTotal}
+section(style='position: absolute; left: 1320px; width: 300px; height: 270px; top: 300px;')
+  section(style=' position: relative; width: 100%; height: 100%; bottom:5px;')
+    .card(style='width: 100%; height: 100%; background-color: rgb(240, 248, 255, 0.6); ')
+      .card-body(style='height: 100%;')
+        h5  TireClinic Total
+        hr
+        h5 Car: #{totalCarAmount}
+        h5 Truck: #{totalTruckAmount}
+        h5 Bodaboda: #{totalBodabodaAmount} 
+        h5 Taxi: #{totalTaxiAmount} 
+        h5 Coaster: #{totalCoasterAmount} 
+        h5(style='float: right;') Total: #{overallTotal}
+section(style='position: absolute; left: 1320px; width: 300px; height: 270px; top: 580px;')
+  section(style=' position: relative; width: 100%; height: 100%; bottom:5px;')
+    .card(style='width: 100%; height: 100%; background-color: rgb(240, 248, 255, 0.6); ')
+      .card-body(style='height: 100%;')
+        h5  Battery Section
+        hr
+        h5 Car: #{totalCarAmount}
+        h5 Truck: #{totalTruckAmount}
+        h5 Bodaboda: #{totalBodabodaAmount} 
+        h5 Taxi: #{totalTaxiAmount} 
+        h5 Coaster: #{totalCoasterAmount} 
+        h5(style='float: right;') Total: #{overallTotal}
+
 section(style='position: absolute; left: 38px; width: 650px; height: 450px; top: 1500px;')
   section(style='position: relative; width: 100%; height: 100%; bottom:5px;')
     .card(style='width: 100%; height: 100%; background-color: rgb(240, 248, 255, 0.01);')

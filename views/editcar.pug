@@ -53,7 +53,7 @@ head
 // car form
 div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height: 900px; width: 752px; top: 60%; left: 50%; opacity:80%;transform: translate(-50%, -50%);')
   div(style='position: relative; width: 703px; height: 674px; left: 20px; top: 20px;')
-    form(name='car' method='POST' action='/api/car/edit?id='+car._id onsubmit='return validate(event);')
+    form(name='registration' method='POST' action='/api/car/edit?id='+car._id onsubmit='return validate(event);')
       .row.g-3
         .col(style='text-align: center;')
           h1 Car Form
@@ -88,7 +88,7 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
           span#arrival-time-error
         .col
           label(for='') Depature time
-          input#depature-time.form-control(type='time' placeholder='Depature Time' aria-label='Depature time' name='depaturetime' value=car.departuretime)
+          input#depature-time.form-control(type='time' placeholder='Departure Time' aria-label='Departure time' name='departuretime' value=car.departuretime)
           span#departure-time-error
       br
       .row.g-3
@@ -159,29 +159,3 @@ script(src='/script/script.js')
 script(src='/css/lib/bootstrap/js/bootstrap.js')
 script(src='/script/validate.js')
 script(src='/script/pscript.js')
-//
-  <script>
-  // Validating for NIN
-  let nin = document.registration.nin
-  let ninError = document.getElementById("nin-error")
-  if(nin.value == ""){
-  nin.style.border = "1px solid red";
-  ninError.textContent = "NIN is required";
-  ninError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
-  nin.focus();
-  error++;
-  }
-  const ninRegex = /^CF([a-zA-Z0-9]{12})+$/
-  const ninRegex2 = /^CM([a-zA-Z0-9]{12})+$/
-  if(!(ninRegex.test(nin.value)|| ninRegex2.test(nin.value))){
-  nin.style.border = "1px solid red";
-  ninError.textContent = "NIN should look like CFXXXXXXX or CMXXXXXXX";
-  ninError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
-  nin.focus();
-  error++;
-  }
-  else{
-  nin.style.border = "1px solid green";
-  ninError.textContent = "";
-  }
-  </script>

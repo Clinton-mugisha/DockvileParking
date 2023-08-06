@@ -1,7 +1,7 @@
 doctype html
 head
   meta(charset='UTF-8')
-  title boda Boda
+  title Boda form
   link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css')
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css')
   link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
@@ -51,12 +51,12 @@ head
 // /#wrapper
 // partial
 // car form
-div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height: 900px; width: 752px; top: 30px; left: 436px; opacity:80%;')
+div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height: 900px; width: 752px; top: 60%; left: 50%; opacity:80%;transform: translate(-50%, -50%);')
   div(style='position: relative; width: 703px; height: 674px; left: 20px; top: 20px;')
-    form(name='registration' method='POST' action='#' onsubmit=' return validate(event);')
+    form(name='registration' method='POST' action='/api/regbodaboda' onsubmit='return validate(event);')
       .row.g-3
         .col(style='text-align: center;')
-          h1 BodaBoda Form
+          h1 Boda Form
       .row.g-3
         .col
           input.form-control(type='text' placeholder='First name' aria-label='First name' name='firstname')
@@ -67,36 +67,36 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
         .col
           .col-auto
             label.visually-hidden(for='autoSizingSelect') Gender
-            select#autoSizingSelect.form-select(itemid='gender')
+            select#autoSizingSelect.form-select(itemid='gender' name='gender')
               option(selected='') Gender
-              option(value='1') Male
-              option(value='2') Female
+              option(value='Male' name='gender') Male
+              option(value='Female' name='gender') Female
             span#gender-error
       br
       .row.g-3
         .col
-          input#number-plate.form-control(type='text' placeholder='Number plate' aria-label='Number plate')
+          input#number-plate.form-control(type='text' placeholder='Number plate' aria-label='Number plate' name='numberplate')
           span#number-plate-error
         .col
-          input#color.form-control(type='text' placeholder='Color' aria-label='Color')
+          input#color.form-control(type='text' placeholder='Color' aria-label='Color' name='color')
           span#color-error
       br
       .row.g-3
         .col
           label(for='') Arrival time
-          input#arrival-time.form-control(type='time' placeholder='Arrival time' aria-label='Arrival time')
+          input#arrival-time.form-control(type='time' placeholder='Arrival time' aria-label='Arrival time' name='arrivaltime')
           span#arrival-time-error
         .col
           label(for='') Depature time
-          input#depature-time.form-control(type='time' placeholder='Depature Time' aria-label='Depature time')
+          input#depature-time.form-control(type='time' placeholder='Depature Time' aria-label='Depature time' name='depaturetime')
           span#departure-time-error
       br
       .row.g-3
         .col
-          input#car-type.form-control(type='text' placeholder='Model' aria-label='Model')
+          input#car-type.form-control(type='text' placeholder='Model' aria-label='Model' name='model')
           span#car-type-error
         .col
-          input#date.form-control(type='date' placeholder='Date' aria-label='Date')
+          input#date.form-control(type='date' placeholder='Date' aria-label='Date' name='date')
           span#date-error
         .col
           input.form-control(type='text' placeholder='contact' aria-label='contact' name='phone')
@@ -106,20 +106,18 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
         .col
           .col-auto
             label.visually-hidden(for='autoSizingSelect') Period
-            select#autoSizingSelect.form-select(itemid='period')
+            select#autoSizingSelect.form-select(name='period')
               option(selected='') Period
-              option(value='1') Day
-              option(value='2') Night
-              option(value='3') Less than 3 hours
-            span#period-error
+              option(value='Day') Day
+              option(value='Night') Night
+              option(value='Less than 3 hours') Less than 3 hours
         .col
           .col-auto
             label.visually-hidden(for='autoSizingSelect')  Amount
-            select#autoSizingSelect.form-select(itemid='amount')
+            select#autoSizingSelect.form-select(name='amount')
               option(selected='') Amount
-              option(value='1') 2000
-              option(value='2') 1000
-            span#amount-error
+              option(value='2000') 2000
+              option(value='1000') 1000
         .col
           input.form-control(type='text' placeholder='NIN' aria-label='NIN' name='nin')
           span#nin-error
@@ -136,20 +134,20 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
         .col
           h3 Car tyre clinic
           .form-check
-            input#flexCheckDefault.form-check-input(type='checkbox' value='')
+            input#flexCheckDefault.form-check-input(type='checkbox' value='Tire Pressure' name='tireclinic')
             label.form-check-label(for='flexCheckDefault')
               | tire pressure
           .form-check
-            input#flexCheckDefault.form-check-input(type='checkbox' value='')
+            input#flexCheckDefault.form-check-input(type='checkbox' value='Valves' name='tireclinic')
             label.form-check-label(for='flexCheckDefault')
               | Valves
           .form-check
-            input#flexCheckDefault.form-check-input(type='checkbox' value='')
+            input#flexCheckDefault.form-check-input(type='checkbox' value='Puncturefixing' name='tireclinic')
             label.form-check-label(for='flexCheckDefault')
               | puncture fixing
         .col
           h3 Battery Section
-          input#size.form-control(type='text' placeholder='Size' aria-label='Model')
+          input#size.form-control(type='text' placeholder='Size' aria-label='Model' name='battery')
           span#size-error
       br
       button.btn.btn-primary(type='submit') Submit
@@ -157,33 +155,24 @@ script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js')
 script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js')
-
+script(src='/script/script.js')
 script(src='/css/lib/bootstrap/js/bootstrap.js')
 script(src='/script/validate.js')
 script(src='/script/pscript.js')
-//
-  <script>
-  // Validating for NIN
-  let nin = document.registration.nin
-  let ninError = document.getElementById("nin-error")
-  if(nin.value == ""){
-  nin.style.border = "1px solid red";
-  ninError.textContent = "NIN is required";
-  ninError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
-  nin.focus();
-  error++;
+script.
+  // Format date as dd/mm/yyyy
+  function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
   }
-  const ninRegex = /^CF([a-zA-Z0-9]{12})+$/
-  const ninRegex2 = /^CM([a-zA-Z0-9]{12})+$/
-  if(!(ninRegex.test(nin.value)|| ninRegex2.test(nin.value))){
-  nin.style.border = "1px solid red";
-  ninError.textContent = "NIN should look like CFXXXXXXX or CMXXXXXXX";
-  ninError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
-  nin.focus();
-  error++;
+
+  // Prepare date before form submission
+  function prepareDate(event) {
+    const dateInput = document.getElementById('date');
+    const formattedDate = formatDate(dateInput.value);
+    dateInput.value = formattedDate;
   }
-  else{
-  nin.style.border = "1px solid green";
-  ninError.textContent = "";
-  }
-  </script>
+

@@ -53,7 +53,7 @@ head
 // car form
 div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height: 900px; width: 752px;opacity:80%;top: 60%; left: 50%;transform: translate(-50%, -50%);')
   div(style='position: relative; width: 703px; height: 674px; left: 20px; top: 20px;')
-    form(name='registration' method='POST' action='/api/car/edit?id='+truck._id onsubmit=' return validate(event);')
+    form(name='registration' method='POST' action='/api/truck/edit?id='+truck._id onsubmit=' return validate(event);')
       .row.g-3
         .col(style='text-align: center;')
           h1 Truck Form
@@ -67,10 +67,10 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
         .col
           .col-auto
             label.visually-hidden(for='autoSizingSelect') Gender
-            select#autoSizingSelect.form-select(itemid='gender' name='gender' value=truck.firstname)
+            select#autoSizingSelect.form-select(itemid='gender' name='gender' value=truck.gender)
               option(selected='') Gender
-              option(value='Male') Male
-              option(value='Female') Female
+              option(value='Male' name='gender' selected=truck.gender === 'Male') Male
+              option(value='Female' name='gender' selected=truck.gender === 'Female') Female
             span#gender-error
       br
       .row.g-3
@@ -88,7 +88,7 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
           span#arrival-time-error
         .col
           label(for='') Depature time
-          input#depature-time.form-control(type='time' placeholder='Depature Time' aria-label='Depature time' name='depaturetime' value=truck.depaturetime)
+          input#depature-time.form-control(type='time' placeholder='Depature Time' aria-label='Depature time' name='departuretime' value=truck.departuretime)
           span#departure-time-error
       br
       .row.g-3
@@ -108,24 +108,24 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
             label.visually-hidden(for='autoSizingSelect') Period
             select#autoSizingSelect.form-select(name='period' value=truck.period)
               option(selected='') Period
-              option(value='Day') Day
-              option(value='Night') Night
-              option(value='Less than 3 hours') Less than 3 hours
+              option(value='Day' selected=truck.period === 'Day') Day
+              option(value='Night' selected=truck.period === 'Night') Night
+              option(value='Less than 3 hours' selected=truck.period === 'Less than 3 hours') Less than 3 hours
         .col
           .col-auto
             label.visually-hidden(for='autoSizingSelect')  Amount
             select#autoSizingSelect.form-select(name='amount' value=truck.amount)
               option(selected='') Amount
-              option(value='2000') 2000
-              option(value='3000') 3000
-              option(value='5000') 5000
+              option(value='2000' selected=truck.amount === '2000') 2000
+              option(value='3000'  selected=truck.amount === '3000') 3000
+              option(value='5000' selected=truck.amount === '5000') 5000
         .col
           input.form-control(type='text' placeholder='NIN' aria-label='NIN' name='nin' value=truck.nin)
           span#nin-error
       br
       .row.g-3
         .col
-          input.form-control(type='number' placeholder='Identifier' aria-label='Identifier' min='1' max='200' name='number' value=truck.nin)
+          input.form-control(type='number' placeholder='Identifier' aria-label='Identifier' min='1' max='200' name='number' value=truck.number)
           span#number-error
       br
       .col(style='text-align: center;')
@@ -135,15 +135,15 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
         .col
           h3 Car tyre clinic
           .form-check
-            input#flexCheckDefault.form-check-input(type='checkbox' value='Tire Pressure' name='tireclinic')
+            input#flexCheckDefault.form-check-input(type='checkbox' value='Tire Pressure' name='tireclinic[]' checked=truck.tireclinic.includes('Tire Pressure'))
             label.form-check-label(for='flexCheckDefault')
               | tire pressure
           .form-check
-            input#flexCheckDefault.form-check-input(type='checkbox' value='Valves' name='tireclinic')
+            input#flexCheckDefault.form-check-input(type='checkbox' value='Valves' name='tireclinic[]' checked=truck.tireclinic.includes('Valves'))
             label.form-check-label(for='flexCheckDefault')
               | Valves
           .form-check
-            input#flexCheckDefault.form-check-input(type='checkbox' value='Puncture Fixing' name='tireclinic')
+            input#flexCheckDefault.form-check-input(type='checkbox' value='Puncture Fixing' name='tireclinic[]' checked=truck.tireclinic.includes('puncture fixing'))
             label.form-check-label(for='flexCheckDefault')
               | puncture fixing
         .col
@@ -160,29 +160,3 @@ script(src='/script/script.js')
 script(src='/css/lib/bootstrap/js/bootstrap.js')
 script(src='/script/validate.js')
 script(src='/script/pscript.js')
-//
-  <script>
-  // Validating for NIN
-  let nin = document.registration.nin
-  let ninError = document.getElementById("nin-error")
-  if(nin.value == ""){
-  nin.style.border = "1px solid red";
-  ninError.textContent = "NIN is required";
-  ninError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
-  nin.focus();
-  error++;
-  }
-  const ninRegex = /^CF([a-zA-Z0-9]{12})+$/
-  const ninRegex2 = /^CM([a-zA-Z0-9]{12})+$/
-  if(!(ninRegex.test(nin.value)|| ninRegex2.test(nin.value))){
-  nin.style.border = "1px solid red";
-  ninError.textContent = "NIN should look like CFXXXXXXX or CMXXXXXXX";
-  ninError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
-  nin.focus();
-  error++;
-  }
-  else{
-  nin.style.border = "1px solid green";
-  ninError.textContent = "";
-  }
-  </script>

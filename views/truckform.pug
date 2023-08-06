@@ -160,29 +160,20 @@ script(src='/script/script.js')
 script(src='/css/lib/bootstrap/js/bootstrap.js')
 script(src='/script/validate.js')
 script(src='/script/pscript.js')
-//
-  <script>
-  // Validating for NIN
-  let nin = document.registration.nin
-  let ninError = document.getElementById("nin-error")
-  if(nin.value == ""){
-  nin.style.border = "1px solid red";
-  ninError.textContent = "NIN is required";
-  ninError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
-  nin.focus();
-  error++;
+script.
+  // Format date as dd/mm/yyyy
+  function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
   }
-  const ninRegex = /^CF([a-zA-Z0-9]{12})+$/
-  const ninRegex2 = /^CM([a-zA-Z0-9]{12})+$/
-  if(!(ninRegex.test(nin.value)|| ninRegex2.test(nin.value))){
-  nin.style.border = "1px solid red";
-  ninError.textContent = "NIN should look like CFXXXXXXX or CMXXXXXXX";
-  ninError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
-  nin.focus();
-  error++;
+
+  // Prepare date before form submission
+  function prepareDate(event) {
+    const dateInput = document.getElementById('date');
+    const formattedDate = formatDate(dateInput.value);
+    dateInput.value = formattedDate;
   }
-  else{
-  nin.style.border = "1px solid green";
-  ninError.textContent = "";
-  }
-  </script>
+

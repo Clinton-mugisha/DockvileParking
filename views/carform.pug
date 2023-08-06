@@ -53,7 +53,7 @@ head
 // car form
 div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height: 900px; width: 752px; top: 60%; left: 50%; opacity:80%;transform: translate(-50%, -50%);')
   div(style='position: relative; width: 703px; height: 674px; left: 20px; top: 20px;')
-    form(name='car' method='POST' action='/api/regcar' onsubmit='return validate(event);')
+    form(name='registration' method='POST' action='/api/regcar' onsubmit='return validate(event);')
       .row.g-3
         .col(style='text-align: center;')
           h1 Car Form
@@ -67,8 +67,8 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
         .col
           .col-auto
             label.visually-hidden(for='autoSizingSelect') Gender
-            select#autoSizingSelect.form-select(itemid='gender' name='gender')
-              option(selected='') Gender
+            select#gender.form-select(name='gender')
+              option(selected='' value='Gender') Gender
               option(value='Male' name='gender') Male
               option(value='Female' name='gender') Female
             span#gender-error
@@ -106,15 +106,16 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
         .col
           .col-auto
             label.visually-hidden(for='autoSizingSelect') Period
-            select#autoSizingSelect.form-select(name='period')
+            select#period.form-select(name='period')
               option(selected='') Period
               option(value='Day') Day
               option(value='Night') Night
               option(value='Less than 3 hours') Less than 3 hours
+              span#period-error
         .col
           .col-auto
             label.visually-hidden(for='autoSizingSelect')  Amount
-            select#autoSizingSelect.form-select(name='amount')
+            select#amount.form-select(name='amount')
               option(selected='') Amount
               option(value='2000') 2000
               option(value='3000') 3000
@@ -176,29 +177,3 @@ script.
     dateInput.value = formattedDate;
   }
 
-//
-  <script>
-  // Validating for NIN
-  let nin = document.registration.nin
-  let ninError = document.getElementById("nin-error")
-  if(nin.value == ""){
-  nin.style.border = "1px solid red";
-  ninError.textContent = "NIN is required";
-  ninError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
-  nin.focus();
-  error++;
-  }
-  const ninRegex = /^CF([a-zA-Z0-9]{12})+$/
-  const ninRegex2 = /^CM([a-zA-Z0-9]{12})+$/
-  if(!(ninRegex.test(nin.value)|| ninRegex2.test(nin.value))){
-  nin.style.border = "1px solid red";
-  ninError.textContent = "NIN should look like CFXXXXXXX or CMXXXXXXX";
-  ninError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
-  nin.focus();
-  error++;
-  }
-  else{
-  nin.style.border = "1px solid green";
-  ninError.textContent = "";
-  }
-  </script>

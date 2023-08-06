@@ -43,7 +43,7 @@ const truckSchema = new mongoose.Schema({
 
     },
     date: {
-        type: Date,
+        type: String,
         required: true
     },
     period:{
@@ -54,7 +54,7 @@ const truckSchema = new mongoose.Schema({
     amount: {
         type: Number,
         required: true,
-        enum: ['3000', '2000', '5000']
+        enum: [3000, 2000, 5000]
     },
     nin:{
         type: String,

@@ -49,12 +49,12 @@ const carSchema = new mongoose.Schema({
     period:{
         type: String,
         required: true,
-        enum: ['Day', 'Night', 'Less than 3hours']
+        enum: ['Day', 'Night', 'Less than 3 hours']
     },
     amount: {
         type: Number,
         required: true,
-        enum: ['3000','2000']
+        enum: [3000, 2000]
     },
     nin:{
         type: String,
