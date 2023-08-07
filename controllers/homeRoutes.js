@@ -25,6 +25,12 @@ router.get('/home', async (req, res, next) => {
       const bodaboda= req.session.bodaboda;
       const taxi= req.session.taxi;
       const truck= req.session.truck;
+      const itemCount = req.session.itemCount;
+      const bodabodacount = req.session.bodabodacount;
+      const coastercount = req.session.coastercount;
+      const taxicount = req.session.taxicount;
+      const truckcount = req.session.truckcount;
+
 
 
 
@@ -33,6 +39,7 @@ router.get('/home', async (req, res, next) => {
       const overallTotal = totalCarAmount + totalTruckAmount + totalBodabodaAmount + totalTaxiAmount + totalCoasterAmount;
       const total = grandTotal + coaster+ bodaboda+ taxi + truck;
       const totalr = overallTotal + total
+    const vehicletotal = itemCount +bodabodacount + coastercount + taxicount + truckcount
   
       res.render('home', {
         totalCarAmount,
@@ -43,6 +50,12 @@ router.get('/home', async (req, res, next) => {
         coaster,
         taxi,
         totalr,
+        itemCount,
+        coastercount,
+        taxicount,
+        truckcount,
+        vehicletotal,
+        bodabodacount,
         truck,
         total,
         bodaboda,

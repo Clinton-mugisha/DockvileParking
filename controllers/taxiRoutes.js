@@ -31,13 +31,15 @@ router.post('/regtaxi', async(req, res) => {
     router.get('/taxilist', async (req, res) => {
         try{
             let items= await Taxi.find(); // .find is a moongose function that finds all the stuff from the model
+            const taxicount = await Taxi.countDocuments();
+            req.session.taxicount = taxicount;
             let amount = await Taxi.aggregate([
                 {'$group': {_id: '$all',
             totalamount: {$sum: '$amount'}
         }}
 //let ages =group{totalAge{sum}}
             ])  
-            res.render('taxilist',{taxis:items, custotal:amount[0].totalamount })
+            res.render('taxilist',{taxis:items, custotal:amount[0].totalamount,taxicount })
             
             
         }

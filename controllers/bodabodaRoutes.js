@@ -31,13 +31,15 @@ router.post('/regbodaboda', async(req, res) => {
     router.get('/bodabodalist', async (req, res) => {
         try{
             let items= await Bodaboda.find(); // .find is a moongose function that finds all the stuff from the model
+            const bodabodacount = await Bodaboda.countDocuments();
+            req.session.bodabodacount = bodabodacount;
             let amount = await Bodaboda.aggregate([
                 {'$group': {_id: '$all',
             totalamount: {$sum: '$amount'}
         }}
 //let ages =group{totalAge{sum}}
             ])  
-            res.render('bodabodalist',{bodabodas:items, custotal:amount[0].totalamount })
+            res.render('bodabodalist',{bodabodas:items, custotal:amount[0].totalamount,bodabodacount })
             
             
         }

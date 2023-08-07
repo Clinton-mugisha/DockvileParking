@@ -31,13 +31,15 @@ router.post('/regcoaster', async(req, res) => {
     router.get('/coasterlist', async (req, res) => {
         try{
             let items= await Coaster.find(); // .find is a moongose function that finds all the stuff from the model
+            const coastercount = await Coaster.countDocuments();
+            req.session.coastercount = coastercount;
             let amount = await Coaster.aggregate([
                 {'$group': {_id: '$all',
             totalamount: {$sum: '$amount'}
         }}
 //let ages =group{totalAge{sum}}
             ])  
-            res.render('coasterlist',{coasters:items, custotal:amount[0].totalamount })
+            res.render('coasterlist',{coasters:items, custotal:amount[0].totalamount, coastercount })
             
             
         }
@@ -88,6 +90,7 @@ router.post('/coaster/edit', async (req, res) => {
 router.get('/coasterlistt', async (req, res) => {
     try {
       let items = await Coaster.find();
+
   
       // Calculate the sum of valves, puncturefixing, and tirepressure for each document
       let amounts = await Coaster.aggregate([
@@ -108,7 +111,7 @@ router.get('/coasterlistt', async (req, res) => {
       // Extract the grandTotal from the aggregated result
       let coaster = amounts.length > 0 ? amounts[0].coaster : 0;
       req.session.coaster = coaster;
-      res.render('coasterlistt', { coasters: items, coaster });
+      res.render('coasterlistt', { coasters: items, coaster});
     } catch (error) {
       return res.status(400).send({ message: 'sorry could not get employees' });
       console.log(error);
