@@ -9,7 +9,7 @@ const validate=(event)=>{
     let arrivalTime = document.getElementById("arrival-time");
     let departureTime = document.getElementById("departure-time");
     let date = document.getElementById("date");
-    const gender = document.getElementById("gender");
+    let gender = document.getElementById("gender");
     let period =  document.getElementById("period");
     let amount = document.getElementById("amount");
     let carType = document.getElementById("car-type")
@@ -251,7 +251,7 @@ if (date.value.trim() === "") {
 }
 
 // Validation for gender
-if (gender.value === "Gender") {
+if(gender.value === "Gender") {
   gender.style.border = "1px solid red";
   genderError.textContent = "Please select a gender";
   genderError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";

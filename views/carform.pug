@@ -68,9 +68,9 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
           .col-auto
             label.visually-hidden(for='autoSizingSelect') Gender
             select#gender.form-select(name='gender')
-              option(selected='' value='Gender') Gender
-              option(value='Male' name='gender') Male
-              option(value='Female' name='gender') Female
+              option#gender(selected='' value='Gender') Gender
+              option#gender(value='Male' name='gender') Male
+              option#gender(value='Female' name='gender') Female
             span#gender-error
       br
       .row.g-3

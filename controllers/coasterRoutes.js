@@ -39,6 +39,7 @@ router.post('/regcoaster', async(req, res) => {
         }}
 //let ages =group{totalAge{sum}}
             ])  
+            let totalmoney = amount[0].totalamount
             res.render('coasterlist',{coasters:items, custotal:amount[0].totalamount, coastercount })
             
             

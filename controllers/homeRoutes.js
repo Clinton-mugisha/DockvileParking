@@ -11,7 +11,6 @@ router.use(session({
   saveUninitialized: true
 }));
 
-++
 
 router.get('/home', async (req, res, next) => {
     try {
