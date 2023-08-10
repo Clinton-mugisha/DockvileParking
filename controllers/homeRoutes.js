@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const { ensureLoggedIn }= require('connect-ensure-login')
+
 const { calculateTotalAmount } = require('../controllers/utils');
 const parkingListTRoute = require('../controllers/carRoutes');
 const session = require('express-session');
@@ -12,7 +14,7 @@ router.use(session({
 }));
 
 
-router.get('/home', async (req, res, next) => {
+router.get('/home', ensureLoggedIn('/api/login'), async (req, res, next) => {
     try {
       // Calculate the total amounts for each collection
       const totalCarAmount = await calculateTotalAmount('car');
@@ -121,11 +123,6 @@ router.get('/bodaboda', (req, res)=>{
 
 // car form rout
 
-
-// signup route
-router.get('/sign', (req, res)=>{
-    res.render('signup.pug')
-});
 // email route
 router.get('/email', (req, res)=>{
     res.render('email.pug')

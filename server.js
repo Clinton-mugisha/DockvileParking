@@ -1,12 +1,14 @@
 const express = require('express');
 const path = require('path');
 const dotenv = require('dotenv').config();
+const passport = require('passport')
 // importing our database configuration
 const connectDB = require('./config/dbConfig')
 const port  = process.env.PORT || 3000;
 
 
 const app = express();
+const Signup = require('./models/usermodel')
 // importing homeRoutes
 const homeRoutes = require('./controllers/homeRoutes')
 const carRoutes = require('./controllers/carRoutes')
@@ -14,8 +16,14 @@ const truckRoutes = require('./controllers/truckRoutes')
 const bodabodaRoutes = require('./controllers/bodabodaRoutes')
 const taxiRoutes = require('./controllers/taxiRoutes')
 const coasterRoutes = require('./controllers/coasterRoutes')
+const userRoutes = require('./controllers/userRoutes')
 
+const expressSession = require('express-session')({
+    secret: 'secrete',
+    resave: false,
+    saveUnitialised: false
 
+})
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -38,9 +46,14 @@ app.use('/api', truckRoutes);
 app.use('/api', bodabodaRoutes);
 app.use('/api', taxiRoutes);
 app.use('/api', coasterRoutes);
+app.use('/api',userRoutes);
+app.use(expressSession)
+app.use(passport.initialize());
+app.use(passport.session());
 
-
-
+passport.use(Signup.createStrategy());
+passport.serializeUser(Signup.serializeUser());
+passport.deserializeUser(Signup.deserializeUser());
 
 
 // running the server on a specific port (3000)
