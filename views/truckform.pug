@@ -34,7 +34,7 @@ head
           li
             a(href='parking') Parking
           li
-            a(href='tire') Tire Clinic
+            a(href='tablest') Tire Clinic
           li
             a(href='renting') Renting Batteries
       li
@@ -68,7 +68,7 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
           .col-auto
             label.visually-hidden(for='autoSizingSelect') Gender
             select#autoSizingSelect.form-select(itemid='gender' name='gender')
-              option(selected='') Gender
+              option(selected='' value='') Gender
               option(value='Male' name='gender') Male
               option(value='Female' name='gender') Female
             span#gender-error
@@ -107,18 +107,21 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
           .col-auto
             label.visually-hidden(for='autoSizingSelect') Period
             select#autoSizingSelect.form-select(name='period')
-              option(selected='') Period
+              option(selected='' value='') Period
               option(value='Day') Day
               option(value='Night') Night
               option(value='Less than 3 hours') Less than 3 hours
+            span#period-error
+            
         .col
           .col-auto
             label.visually-hidden(for='autoSizingSelect')  Amount
             select#autoSizingSelect.form-select(name='amount')
-              option(selected='') Amount
+              option(selected='' value='') Amount
               option(value='2000') 2000
               option(value='3000') 3000
               option(value='5000') 5000
+            span#amount-error
         .col
           input.form-control(type='text' placeholder='NIN' aria-label='NIN' name='nin')
           span#nin-error

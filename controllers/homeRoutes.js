@@ -14,7 +14,7 @@ router.use(session({
 }));
 
 
-router.get('/home', ensureLoggedIn('/api/login'), async (req, res, next) => {
+router.get('/home',async (req, res, next) => {
     try {
       // Calculate the total amounts for each collection
       const totalCarAmount = await calculateTotalAmount('car');

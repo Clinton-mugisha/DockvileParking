@@ -6,7 +6,7 @@ head
   title signuppage
 #container.container
   .form-container.sign-up-container
-    form(action='/api/register' name='register' onsubmit='return validate();' method='POST')
+    form(action='/api/register' name='registration' method='POST' onsubmit='return validate(event);' )
       h1 Create Account
       .social-container
         a.social(href='#')
@@ -20,10 +20,11 @@ head
       span#nameerror
       input(type='email' placeholder='Email' name='email')
       span#emailerror
-      input(type='password' placeholder='Password' name='password')
-      button(type='submit' onclick='return validate();') Sign Up
+      input(type='password' placeholder='Password' name='passwordd')
+      span#passwordderror
+      button(type='submit') Sign Up
   .form-container.sign-in-container
-    form(action='/api/login' method='POST'  name= 'register')
+    form(action='/api/login' method='POST'  name= 'registra' onsubmit=' return validatte(event);' )
       h1 Sign in
       .social-container
         a.social(href='#')
@@ -33,8 +34,10 @@ head
         a.social(href='#')
           i.fab.fa-linkedin-in
       span or use your account
-      input(type='email' placeholder='Email' name='email')
-      input(type='password' placeholder='Password' name='password')
+      input(type='email' placeholder='Email' name='emaill')
+      span#emaillerror
+      input(type='password' placeholder='Password' name='passworddd')
+      span#passworddderror
       a(href='#') Forgot your password?
       button.sign-in-button(type='submit') Sign In
   .overlay-container
@@ -57,5 +60,4 @@ script.
   signInButton.addEventListener('click', () => {
   container.classList.remove("right-panel-active");
   });
-script(src='/script/validate.js')
 script(src='/script/script.js')
