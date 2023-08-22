@@ -153,18 +153,18 @@ const validate = (event) => {
     ninError.textContent = "";
   }
   // Validation for number plate
- // Validation for number plate
-const numberPlateRegex = /^[U][A-Z0-9]{6}$/;
-if (!numberPlateRegex.test(numberPlate.value.trim())) {
-  numberPlate.style.border = "1px solid red";
-  numberPlateError.textContent = "Number plate should start with U and have 7 characters in total";
-  numberPlateError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
-  numberPlate.focus();
-  error++;
-} else {
-  numberPlate.style.border = "1px solid green";
-  numberPlateError.textContent = "";
-}
+  // Validation for number plate
+  const numberPlateRegex = /^[U][A-Z0-9]{6}$/;
+  if (!numberPlateRegex.test(numberPlate.value.trim())) {
+    numberPlate.style.border = "1px solid red";
+    numberPlateError.textContent = "Number plate should start with U and have 7 characters in total";
+    numberPlateError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
+    numberPlate.focus();
+    error++;
+  } else {
+    numberPlate.style.border = "1px solid green";
+    numberPlateError.textContent = "";
+  }
 
   // Vali
 
@@ -229,17 +229,17 @@ if (!numberPlateRegex.test(numberPlate.value.trim())) {
   }
 
 
-      // Validation for amount
-      if (amount.value === "") {
-        amount.style.border = "1px solid red";
-        amountError.textContent = "Please select an amount";
-        amountError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
-        amount.focus();
-        error++;
-      } else {
-        amount.style.border = "1px solid green";
-        amountError.textContent = "";
-      }
+  // Validation for amount
+  if (amount.value === "") {
+    amount.style.border = "1px solid red";
+    amountError.textContent = "Please select an amount";
+    amountError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
+    amount.focus();
+    error++;
+  } else {
+    amount.style.border = "1px solid green";
+    amountError.textContent = "";
+  }
   // Validation for date
   if (date.value.trim() === "") {
     date.style.border = "1px solid red";
@@ -254,7 +254,7 @@ if (!numberPlateRegex.test(numberPlate.value.trim())) {
 
   // Validation for gender
   console.log(gender.value)
-  if(gender.value === "") {
+  if (gender.value === "") {
     gender.style.border = "1px solid red";
     genderError.textContent = "Please select a gender";
     genderError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
@@ -321,7 +321,7 @@ if (!numberPlateRegex.test(numberPlate.value.trim())) {
   // }
 
 
-  
+
 
   if (error > 0) {
     event.preventDefault();

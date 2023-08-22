@@ -20,11 +20,11 @@ head
       span#nameerror
       input(type='email' placeholder='Email' name='email')
       span#emailerror
-      input(type='password' placeholder='Password' name='passwordd')
+      input(type='password' placeholder='Password' name='password')
       span#passwordderror
       button(type='submit') Sign Up
   .form-container.sign-in-container
-    form(action='/api/login' method='POST'  name= 'registra' onsubmit=' return validatte(event);' )
+    form(action='/api/login' method='POST'  name= 'register' onsubmit=' return validatte(event);' )
       h1 Sign in
       .social-container
         a.social(href='#')
@@ -34,9 +34,9 @@ head
         a.social(href='#')
           i.fab.fa-linkedin-in
       span or use your account
-      input(type='email' placeholder='Email' name='emaill')
+      input(type='email' placeholder='Email' name='email')
       span#emaillerror
-      input(type='password' placeholder='Password' name='passworddd')
+      input(type='password' placeholder='Password' name='password')
       span#passworddderror
       a(href='#') Forgot your password?
       button.sign-in-button(type='submit') Sign In

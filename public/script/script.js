@@ -1,7 +1,7 @@
 const validate = (event) => {
     // picking input fields with their names or ids.
     let Name = document.registration.name
-    let passwordd = document.registration.passwordd
+    let passwordd = document.registration.password
      let email = document.registration.email
     let NameError = document.getElementById("nameerror")
     let passworddError = document.getElementById("passwordderror")
@@ -28,7 +28,7 @@ const validate = (event) => {
         NameError.style = "color: red; font-size:11px; font-family:helvetica,Arial,sans-serif;";
         Name.focus();
         error++;
-      } else if (!/^[A-Z][a-zA-Z]*$/.test(Name.value)) {
+      } else if (!/^[A-Z][a-zA-Z]*$/.test(Name.value.trim())) {
         Name.style.border = "2px solid red";
         NameError.textContent = " Name should start with a capital letter and contain only alphabetic characters";
         NameError.style = "color: red; font-size:11px; font-family:Helvetica,Arial,sans-serif;";

@@ -34,4 +34,9 @@ router.post('/login', passport.authenticate('local',
 router.get('/login', (req, res) => {
     res.render('signup');
 })
+
+router.get('/logout' , (req,res)=>{
+    req.session.destroy(()=>{res.redirect('/api/signup')}); 
+    console.log('you have been looged out')
+})
 module.exports = router;
