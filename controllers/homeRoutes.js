@@ -99,27 +99,27 @@ router.get('/parking', (req, res)=>{
 
 
 // car form rout
-router.get('/taxi', (req, res)=>{
-    res.render('taxiform.pug')
-});
-router.get('/truck', (req, res)=>{
-    res.render('truckform.pug')
-});
+// router.get('/taxi', (req, res)=>{
+//     res.render('taxiform.pug')
+// });
+// router.get('/truck', (req, res)=>{
+//     res.render('truckform.pug')
+// });
 
 // car form route
-router.get('/car', (req, res)=>{
-    res.render('carform.pug')
-});
+// router.get('/car', (req, res)=>{
+//     res.render('carform.pug')
+// });
 
 // car form rout
-router.get('/coaster', (req, res)=>{
-    res.render('coasterform.pug')
-});
+// router.get('/coaster', (req, res)=>{
+//     res.render('coasterform.pug')
+// });
 
-// car form rout
-router.get('/bodaboda', (req, res)=>{
-    res.render('bodabodaform.pug')
-});
+// // car form rout
+// router.get('/bodaboda', (req, res)=>{
+//     res.render('bodabodaform.pug')
+// });
 
 // car form rout
 

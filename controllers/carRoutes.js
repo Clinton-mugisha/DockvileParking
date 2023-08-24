@@ -11,6 +11,17 @@ router.use(session({
   saveUninitialized: true
 }));
 
+router.get('/car', (req, res)=>{
+  try{
+    let generatedId = Math.floor(Math.random()*10000)
+    res.render('carform.pug', { randId: generatedId})
+
+  }catch(error){
+    return res.status(400).send({ message: 'sorry could not get form' });
+      console.log(error);
+  }
+  
+});
 
 router.post('/regcar', async(req, res) => {
     try{

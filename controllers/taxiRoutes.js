@@ -11,6 +11,17 @@ router.use(session({
   saveUninitialized: true
 }));
 
+router.get('/taxi', (req, res)=>{
+  try{
+    let generatedId = Math.floor(Math.random()*10000)
+    res.render('taxiform.pug', { randId: generatedId})
+
+  }catch(error){
+    return res.status(400).send({ message: 'sorry could not get form' });
+      console.log(error);
+  }
+  
+});
 
 router.post('/regtaxi', async(req, res) => {
     try{

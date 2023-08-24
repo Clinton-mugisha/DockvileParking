@@ -11,9 +11,45 @@ router.use(session({
   saveUninitialized: true
 }));
 
+// Bodaboda form route
+router.get('/bodaboda', (req, res)=>{
+  try{
+    let generatedId = Math.floor(Math.random()*10000)
+    res.render('bodabodaform.pug', { randId: generatedId})
+
+  }catch(error){
+    return res.status(400).send({ message: 'sorry could not get form' });
+      console.log(error);
+  }
+  
+});
+
+router.get('/bodabodalist', async (req, res) => {
+        try{
+            let items= await Bodaboda.find(); // .find is a moongose function that finds all the stuff from the model
+            const bodabodacount = await Bodaboda.countDocuments();
+            req.session.bodabodacount = bodabodacount;
+            let amount = await Bodaboda.aggregate([
+                {'$group': {_id: '$all',
+            totalamount: {$sum: '$amount'}
+        }}
+//let ages =group{totalAge{sum}}
+            ])  
+            res.render('bodabodalist',{bodabodas:items, custotal:amount[0].totalamount,bodabodacount })
+            
+            
+        }
+        catch(error){
+            return res.status(400).send({message:'sorry could not get employees'});
+            console.log(error);
+        }
+    })
+
+
 
 router.post('/regbodaboda', async(req, res) => {
     try{
+      let generatedId = Math.floor(Math.random()*10000)
         const bodaboda = new Bodaboda(req.body);
         await bodaboda.save();
         console.log(req.body);

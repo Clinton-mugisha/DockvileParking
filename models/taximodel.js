@@ -63,7 +63,7 @@ const taxiSchema = new mongoose.Schema({
 
     },
     number:{
-        type: Number,
+        type: String,
         unique: true,
         required: true
 
