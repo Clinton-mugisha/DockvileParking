@@ -173,6 +173,25 @@ router.get('/bodabodalistt', async (req, res) => {
 // })
 
 
+router.post('/searchb', async (req, res) => {
+  try {
+    const searchTerm = req.body.search.toLowerCase();
+    const item = await Bodaboda.find({
+      $or: [
+        { firstname: { $regex: searchTerm, $options: 'i' } },
+        { lastname: { $regex: searchTerm, $options: 'i' } },
+        { model: { $regex: searchTerm, $options: 'i' } },
+        { date: { $regex: searchTerm, $options: 'i' } },
+        { time: { $regex: searchTerm, $options: 'i' } }
+      ]
+    });
+
+    res.render('bodabodalist.pug', { bodabodas: item });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({ message: "Could not perform search" });
+  }
+});
 
 module.exports = router;
 

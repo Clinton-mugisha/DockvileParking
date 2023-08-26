@@ -45,3 +45,7 @@
     font-family:sans-serif;
     font-size:30px;
   }
+  highlight {
+    background-color: yellow; /* or any other highlighting style */
+    font-weight: bold;
+  }

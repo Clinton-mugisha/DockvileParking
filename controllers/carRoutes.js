@@ -146,6 +146,22 @@ router.get('/parkinglistt', async (req, res) => {
 //         console.log(error);
 //     }
 // })
+router.post('/search', async (req, res) => {
+  try {
+    const searchTerm = req.body.search.toLowerCase();
+    const item = await Car.find({
+      $or: [
+        { firstname: { $regex: searchTerm, $options: 'i' } },
+        { lastname: { $regex: searchTerm, $options: 'i' } },
+      ]
+    });
+
+    res.render('parkinglist.pug', { cars: item });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({ message: "Could not perform search" });
+  }
+});
 
 module.exports = router;
 

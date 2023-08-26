@@ -50,8 +50,10 @@ head
       span.hamb-middle
       span.hamb-bottom
 div.search      
-  form.d-flex(role='search')
-    input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
+  form.d-flex(action='/api/searchb' method='POST')
+    .input-group
+      input.form-control(type='text' name='search' placeholder='Search...')
+
     button.btn.btn-outline-success(type='submit') Search
 h1.display-4.font-weight-bold BodaBoda Table
 a.btn.btn-success(href="bodaboda" style='position: absolute; top: 185px; right: 120px') +Add Customer

@@ -50,8 +50,10 @@ head
       span.hamb-middle
       span.hamb-bottom
 div.search      
-  form.d-flex(role='search')
-    input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
+  form.d-flex(action='/api/search' method='POST')
+    .input-group
+      input.form-control(type='text' name='search' placeholder='Search...')
+
     button.btn.btn-outline-success(type='submit') Search
 h1.display-4.font-weight-bold Car Table
 h2 Total amount: #{grandTotal}
@@ -70,15 +72,15 @@ div#table-container
         th(scope='col') Valves 
         th(scope='col') Tirepressure 
         th(scope='col') Puncture fixing
-        td(scope='col') Total
+        th(scope='col') Total
         th(scope='col') Delete
         th(scope='col') Edit
     
     tbody
     if cars.length 
       each car in cars
-        tr
-          th #{car.firstname}
+        tr.searchable-row
+          td #{car.firstname}
           td #{car.lastname}
           td #{car.gender}
           td #{car.phone}
@@ -117,3 +119,4 @@ script.
       event.preventDefault(); // Cancel form submission
     }
   }
+  

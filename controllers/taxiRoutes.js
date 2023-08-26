@@ -146,6 +146,25 @@ router.get('/taxilistt', async (req, res) => {
 //     }
 // })
 
+router.post('/searchta', async (req, res) => {
+  try {
+    const searchTerm = req.body.search.toLowerCase();
+    const item = await Taxi.find({
+      $or: [
+        { firstname: { $regex: searchTerm, $options: 'i' } },
+        { lastname: { $regex: searchTerm, $options: 'i' } },
+        { model: { $regex: searchTerm, $options: 'i' } },
+        { date: { $regex: searchTerm, $options: 'i' } },
+        { time: { $regex: searchTerm, $options: 'i' } }
+      ]
+    });
+
+    res.render('taxilist.pug', { taxis: item });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({ message: "Could not perform search" });
+  }
+});
 
 module.exports = router;
 

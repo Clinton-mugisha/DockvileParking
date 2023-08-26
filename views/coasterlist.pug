@@ -50,8 +50,11 @@ head
       span.hamb-middle
       span.hamb-bottom
 div.search      
-  form.d-flex(role='search')
-    input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
+div.search      
+  form.d-flex(action='/api/searchh' method='POST')
+    .input-group
+      input.form-control(type='text' name='search' placeholder='Search...')
+
     button.btn.btn-outline-success(type='submit') Search
 h1.display-4.font-weight-bold Coaster Table
 a.btn.btn-success(href="coaster" style='position: absolute; top: 185px; right: 120px') +Add Customer

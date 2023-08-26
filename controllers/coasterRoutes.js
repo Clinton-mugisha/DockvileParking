@@ -148,6 +148,21 @@ router.get('/coasterlistt', async (req, res) => {
 //     }
 // })
 
+router.post('/searchh', async (req, res) => {
+  try {
+    const searcht = req.body.search.toLowerCase();
+    const item = await Coaster.find({
+      $or: [
+        { firstname: { $regex: searcht, $options: 'i' } },
+        { lastname: { $regex: searcht, $options: 'i' } },
+      ]
+    });
 
+    res.render('coasterlist.pug', { coasters: item });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({ message: "Could not perform search" });
+  }
+});
 module.exports = router;
 
