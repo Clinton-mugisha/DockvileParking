@@ -51,7 +51,7 @@ head
 // /#wrapper
 // partial
 // car form
-div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height: 900px; width: 752px; top: 60%; left: 50%; opacity:80%;transform: translate(-50%, -50%);')
+div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height: 920px; width: 752px; top: 60%; left: 50%; opacity:80%;transform: translate(-50%, -50%);')
   div(style='position: relative; width: 703px; height: 674px; left: 20px; top: 20px;')
     form(name='registration' method='POST' action='/api/regbodaboda' onsubmit='return validate(event);')
       .row.g-3
@@ -152,8 +152,20 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
             input(type='number' placeholder='5000' aria-label='Identifier' name='puncturefixing')
         .col
           h3 Battery Section
-          input#size.form-control(type='text' placeholder='Size' aria-label='Model' name='battery' )
-          span#size-error
+          label.visually-hidden(for='autoSizingSelect')  Size
+          select#autoSizingSelect.form-select(name='batterysize')
+            option(selected='' value='') Size
+            option(value='Small') Small
+            option(value='Medium') Medium
+            option(value='Large') Large
+          br
+          label.visually-hidden(for='autoSizingSelect')  Size
+          select#autoSizingSelect.form-select(name='batterysizeamount')
+            option(selected='' value='') Battery Amount
+            option(value='50000') 50000
+            option(value='100000') 10000
+            option(value='150000') 150000
+
       br
       button.btn.btn-primary(type='submit') Submit
 script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')

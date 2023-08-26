@@ -8,7 +8,7 @@ head
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/css/tether.min.css')
   link(rel='stylesheet' href='/mycss/parking.css')
   link(rel="stylesheet", href="/mycss/parkinglist.css")
-  title events
+  title taxilistt
 // partial:index.partial.html
 #wrapper
   .overlay
@@ -50,15 +50,11 @@ head
       span.hamb-middle
       span.hamb-bottom
 div.search      
-  form.d-flex(action='/api/searchb' method='POST')
-    .input-group
-      input.form-control(type='text' name='search' placeholder='Search...')
-
+  form.d-flex(role='search')
+    input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
     button.btn.btn-outline-success(type='submit') Search
-h1.display-4.font-weight-bold BodaBoda Table
-a.btn.btn-success(href="bodaboda" style='position: absolute; top: 185px; right: 120px') +Add Customer
-h2 Total amount: #{custotal}
-h2 Total number: #{bodabodacount}
+h1.display-4.font-weight-bold  Taxi Table
+h2 Total amount: #{taxi}
 div#table-container
   table.table.table-dark.table-striped.table-hover
     thead.table-dark
@@ -66,50 +62,37 @@ div#table-container
         th(scope='col') FirstName
         th(scope='col') Lastname
         th(scope='col') Gender 
-        th(scope='col') NumberPlate
-        th(scope='col') Color
-        th(scope='col') Arrival time
-        th(scope='col') Departure time 
-        th(scope='col') Model 
         th(scope='col') Phone 
         th(scope='col') Date 
-        th(scope='col') Period 
-        th(scope='col') Amount 
         th(scope='col') NIN
         th(scope='col') Number
-        th(scope='col') TireClinic 
         th(scope='col') Battery Size 
+        th(scope='col') Amount 
         th(scope='col') Delete
         th(scope='col') Edit
     
     tbody
-    if bodabodas.length 
-      each bodaboda in bodabodas
+    if taxis.length 
+      each taxi in taxis
         tr
-          th #{bodaboda.firstname}
-          td #{bodaboda.lastname}
-          td #{bodaboda.gender}
-          td #{bodaboda.numberplate}
-          td #{bodaboda.color}
-          td #{bodaboda.arrivaltime}
-          td #{bodaboda.departuretime}
-          td #{bodaboda.model}
-          td #{bodaboda.phone}
-          td #{bodaboda.date}
-          td #{bodaboda.period}
-          td #{bodaboda.amount}
-          td #{bodaboda.nin}
-          td #{bodaboda.number}
-          td #{bodaboda.tireclinic}
-          td #{bodaboda.batterysize}
+          th #{taxi.firstname}
+          td #{taxi.lastname}
+          td #{taxi.gender}
+          td #{taxi.phone}
+          td #{taxi.date}
+          td #{taxi.nin}
+          td #{taxi.number}
+          td #{taxi.batterysize}
+          td #{taxi.batterysizeamount} 
           td 
-            form(action='/api/bodaboda/delete' method='POST')
-              input(type="hidden" name='id' value=bodaboda._id)
+            form(action='/api/taxi/delete' method='POST')
+              input(type="hidden" name='id' value=taxi._id)
               button.btn.btn-danger(type="submit" onclick="confirmDelete(event)") Delete
           td  
-            a.btn.btn-warning(href="/api/bodaboda/edit/"+bodaboda._id) Edit
+            a.btn.btn-warning(href="/api/taxi/edit/"+taxi._id) Edit
     else 
-      p there are no employees in the database     
+      p there are no employees in the database  
+   
 script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js')
 script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')

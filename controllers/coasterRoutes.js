@@ -164,5 +164,30 @@ router.post('/searchh', async (req, res) => {
     return res.status(400).send({ message: "Could not perform search" });
   }
 });
+
+router.get('/coasterblist', async (req, res) => {
+  try {
+    let items = await Coaster.find();
+
+    // Calculate the sum of valves, puncturefixing, and tirepressure for each document
+    let amounts = await Coaster.aggregate([
+      {
+        $group: {
+          _id: null,
+          coaster: { $sum: '$batterysizeamount' },
+          coasters: { $push: '$$ROOT' },
+        },
+      },
+    ]);
+
+    // Extract the grandTotal from the aggregated result
+    let coaster = amounts.length > 0 ? amounts[0].coaster : 0;
+    req.session.coaster = coaster;
+    res.render('coasterblist', { coasters: items, coaster });
+  } catch (error) {
+    return res.status(400).send({ message: 'sorry could not get employees' });
+    console.log(error);
+  }
+});
 module.exports = router;
 

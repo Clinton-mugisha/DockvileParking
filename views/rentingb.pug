@@ -1,13 +1,12 @@
 doctype html
 head
   meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Tireclinic
   link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css')
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css')
   link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/css/tether.min.css')
   link(rel='stylesheet' href='/mycss/parking.css')
-  title rentingb
 // partial:index.partial.html
 #wrapper
   .overlay
@@ -48,8 +47,71 @@ head
       span.hamb-top
       span.hamb-middle
       span.hamb-bottom
+// start of parking page
+header.hero-header
+      h1.hero-title View Battery table
+// <div style="width: 1274px; height: 594px;border: 1px solid black; position: relative; top: 70px; left: 123px;">
+div(style='position: absolute; top: 186px; left: 24px;')
+  article.card
+    img.card__background(src='/images/1.jpeg' alt='')
+    .card__content.flow(class='|')
+      .card__content--container.flow(class='|')
+        h2.card__title Personal Car
+        p.card__description
+          | Bellow is the car table
+      button.card__button
+        a(href='parkingblist') car
+// second vehicle
+div(style='position: absolute; top: 186px; left: 395px;')
+  article.card
+    img.card__background(src='/images/t2.jpeg' alt='')
+    .card__content.flow(class='|')
+      .card__content--container.flow(class='|')
+        h2.card__title Trucks
+        p.card__description
+          | Bellow is the truck table
+      button.card__button
+        a(href='truckblist') Trucks
+// 3rd vehicle
+div(style='position: absolute; top: 186px; left: 767px;')
+  article.card
+    img.card__background(src='/images/m2.jpeg' alt='')
+    .card__content.flow(class='|')
+      .card__content--container.flow(class='|')
+        h2.card__title BodaBoda
+        p.card__description
+          | Bellow is the bodaboda table
+      button.card__button
+        a(href='bodabodablist') Boda
+// 4th vehicle
+div(style='position: absolute; top: 186px; left: 1130px;')
+  article.card
+    img.card__background(src='/images/taxi.jpeg' alt='')
+    .card__content.flow(class='|')
+      .card__content--container.flow(class='|')
+        h2.card__title Taxi
+        p.card__description
+          | Bellow is the Taxi Table
+      button.card__button
+        a(href='taxiblist') Taxi
+// 5th vehicle
+div(style='position: absolute; top: 670px; left: 24 px;')
+  article.card
+    img.card__background(src='/images/bus.jpeg' alt='')
+    .card__content.flow(class='|')
+      .card__content--container.flow(class='|')
+        h2.card__title Coaster
+        p.card__description
+          | Bellow is the Coaster Table
+      button.card__button
+        a(href='coasterblist') coaster
+// </div>
+// /#wrapper
+// partial
 script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js')
 script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js')
 script(src='/script/pscript.js')
+script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+script(src='/script/s.js')

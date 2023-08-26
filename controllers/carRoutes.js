@@ -128,6 +128,30 @@ router.get('/parkinglistt', async (req, res) => {
       console.log(error);
     }
   });
+  router.get('/parkingblist', async (req, res) => {
+    try {
+      let items = await Car.find();
+  
+      // Calculate the sum of valves, puncturefixing, and tirepressure for each document
+      let amounts = await Car.aggregate([
+        {
+          $group: {
+            _id: null,
+            car: { $sum: '$batterysizeamount' },
+            cars: { $push: '$$ROOT' },
+          },
+        },
+      ]);
+  
+      // Extract the grandTotal from the aggregated result
+      let car = amounts.length > 0 ? amounts[0].car : 0;
+      req.session.car = car;
+      res.render('parkingblist', { cars: items, car });
+    } catch (error) {
+      return res.status(400).send({ message: 'sorry could not get employees' });
+      console.log(error);
+    }
+  });
   
 // router.get('/parkinglistt', async (req, res) => {
 //     try{

@@ -73,9 +73,14 @@ const bodabodaSchema = new mongoose.Schema({
         type: [String]
         
     },
-    battery: {
-        type: String
+    batterysize: {
+        type: String,
+        enum: ['Small', 'Large', 'Medium']
     },
+    batterysizeamount: {
+        type: Number,
+    },
+
     valves:{
         type: Number,
         

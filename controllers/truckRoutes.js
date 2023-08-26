@@ -168,5 +168,30 @@ router.post('/searchtr', async (req, res) => {
   }
 });
 
+router.get('/truckblist', async (req, res) => {
+  try {
+    let items = await Truck.find();
+
+    // Calculate the sum of valves, puncturefixing, and tirepressure for each document
+    let amounts = await Truck.aggregate([
+      {
+        $group: {
+          _id: null,
+          truck: { $sum: '$batterysizeamount' },
+          trucks: { $push: '$$ROOT' },
+        },
+      },
+    ]);
+
+    // Extract the grandTotal from the aggregated result
+    let truck = amounts.length > 0 ? amounts[0].truck : 0;
+    req.session.truck = truck;
+    res.render('truckblist', { trucks: items, truck });
+  } catch (error) {
+    return res.status(400).send({ message: 'sorry could not get employees' });
+    console.log(error);
+  }
+});
+
 module.exports = router;
 

@@ -153,6 +153,30 @@ router.get('/bodabodalistt', async (req, res) => {
       console.log(error);
     }
   });
+  router.get('/bodabodablist', async (req, res) => {
+    try {
+      let items = await Bodaboda.find();
+  
+      // Calculate the sum of valves, puncturefixing, and tirepressure for each document
+      let amounts = await Bodaboda.aggregate([
+        {
+          $group: {
+            _id: null,
+            bodaboda: { $sum: '$batterysizeamount' },
+            bodabodas: { $push: '$$ROOT' },
+          },
+        },
+      ]);
+  
+      // Extract the grandTotal from the aggregated result
+      let bodaboda = amounts.length > 0 ? amounts[0].bodaboda : 0;
+      req.session.bodaboda = bodaboda;
+      res.render('bodabodablist', { bodabodas: items, bodaboda });
+    } catch (error) {
+      return res.status(400).send({ message: 'sorry could not get employees' });
+      console.log(error);
+    }
+  });
 
 // router.get('/bodabodalistt', async (req, res) => {
 //     try{

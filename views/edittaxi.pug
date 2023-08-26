@@ -150,8 +150,19 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
             input(type='number' placeholder='5000' aria-label='Identifier' name='puncturefixing' value=taxi.puncturefixing)
         .col
           h3 Battery Section
-          input#size.form-control(type='text' placeholder='Size' aria-label='Model' name='battery' value=taxi.battery)
-          span#size-error
+          label.visually-hidden(for='autoSizingSelect')  Size
+          select#autoSizingSelect.form-select(name='batterysize' value=taxi.batterysize)
+            option(selected='' value='') Size
+            option(value='Small' selected=taxi.batterysize === 'Small') Small
+            option(value='Medium' selected=taxi.batterysize === 'Medium') Medium
+            option(value='Large' selected=taxi.batterysize === 'Large') Large
+          br
+          label.visually-hidden(for='autoSizingSelect')  Size
+          select#autoSizingSelect.form-select(name='batterysizeamount' value=taxi.baterysizeamount )
+            option(selected='' value='') Battery Amount
+            option(value='50000' selected=taxi.batterysizeamount === 50000) 50000
+            option(value='100000' selected=taxi.batterysizeamount === 100000) 100000
+            option(value='150000' selected=taxi.batterysizeamount === 150000) 150000
       br
       button.btn.btn-primary(type='submit') Submit
 script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')

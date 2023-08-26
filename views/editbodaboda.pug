@@ -51,7 +51,7 @@ head
 // /#wrapper
 // partial
 // car form
-div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height: 900px; width: 752px; top: 60%; left: 50%; opacity:80%;transform: translate(-50%, -50%);')
+div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height: 920px; width: 752px; top: 60%; left: 50%; opacity:80%;transform: translate(-50%, -50%);')
   div(style='position: relative; width: 703px; height: 674px; left: 20px; top: 20px;')
     form(name='registration' method='POST' action='/api/bodaboda/edit?id='+bodaboda._id onsubmit='return validate(event);')
       .row.g-3
@@ -124,7 +124,7 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
       br
       .row.g-3
         .col
-          input.form-control(type='text' placeholder='Identifier' aria-label='Identifier' min='1' max='200' name='number' value=bodaboda.number)
+          input.form-control(type='text' placeholder='Identifier' aria-label='Identifier' name='number' value=bodaboda.number)
           span#number-error
       br
       .col(style='text-align: center;')
@@ -150,8 +150,19 @@ div(style='background-color: rgb(240, 248, 255, 0.6); position:absolute; height:
             input(type='number' placeholder='5000' aria-label='Identifier' name='puncturefixing' value=bodaboda.puncturefixing)
         .col
           h3 Battery Section
-          input#size.form-control(type='text' placeholder='Size' aria-label='Model' name='battery' value=bodaboda.battery)
-          span#size-error
+          label.visually-hidden(for='autoSizingSelect')  Size
+          select#autoSizingSelect.form-select(name='batterysize' value=bodaboda.batterysize)
+            option(selected='' value='') Size
+            option(value='Small' selected=bodaboda.batterysize === 'Small') Small
+            option(value='Medium' selected=bodaboda.batterysize === 'Medium') Medium
+            option(value='Large' selected=bodaboda.batterysize === 'Large') Large
+          br
+          label.visually-hidden(for='autoSizingSelect')  Size
+          select#autoSizingSelect.form-select(name='batterysizeamount' value=bodaboda.baterysizeamount )
+            option(selected='' value='') Battery Amount
+            option(value='50000' selected=bodaboda.batterysizeamount === 50000) 50000
+            option(value='100000' selected=bodaboda.batterysizeamount === 100000) 100000
+            option(value='150000' selected=bodaboda.batterysizeamount === 150000) 150000
       br
       button.btn.btn-primary(type='submit') Submit
 script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')

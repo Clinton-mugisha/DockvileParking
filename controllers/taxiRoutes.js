@@ -165,6 +165,30 @@ router.post('/searchta', async (req, res) => {
     return res.status(400).send({ message: "Could not perform search" });
   }
 });
+router.get('/taxiblist', async (req, res) => {
+  try {
+    let items = await Taxi.find();
+
+    // Calculate the sum of valves, puncturefixing, and tirepressure for each document
+    let amounts = await Taxi.aggregate([
+      {
+        $group: {
+          _id: null,
+          taxi: { $sum: '$batterysizeamount' },
+          taxis: { $push: '$$ROOT' },
+        },
+      },
+    ]);
+
+    // Extract the grandTotal from the aggregated result
+    let taxi = amounts.length > 0 ? amounts[0].taxi : 0;
+    req.session.taxi = taxi;
+    res.render('taxiblist', { taxis: items, taxi });
+  } catch (error) {
+    return res.status(400).send({ message: 'sorry could not get employees' });
+    console.log(error);
+  }
+});
 
 module.exports = router;
 
