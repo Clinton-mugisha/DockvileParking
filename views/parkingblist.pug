@@ -72,6 +72,8 @@ div#table-container
         th(scope='col') Amount
         th(scope='col') Delete
         th(scope='col') Edit
+        th(scope='col') SignOff
+
     
     tbody
     if cars.length 
@@ -92,6 +94,8 @@ div#table-container
               button.btn.btn-danger(type="submit" onclick="confirmDelete(event)") Delete
           td  
             a.btn.btn-warning(href="/api/car/edit/"+car._id) Edit
+          td  
+            a.btn.btn-success(href="/api/car/edit/"+car._id) SignOff
     else 
       p there are no employees in the database  
    

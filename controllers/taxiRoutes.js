@@ -182,7 +182,7 @@ router.get('/taxiblist', async (req, res) => {
 
     // Extract the grandTotal from the aggregated result
     let taxi = amounts.length > 0 ? amounts[0].taxi : 0;
-    req.session.taxi = taxi;
+    req.session.taxib = taxi;
     res.render('taxiblist', { taxis: items, taxi });
   } catch (error) {
     return res.status(400).send({ message: 'sorry could not get employees' });

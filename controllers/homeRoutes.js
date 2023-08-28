@@ -24,9 +24,14 @@ router.get('/home',async (req, res, next) => {
       const totalCoasterAmount = await calculateTotalAmount('coaster');
       const grandTotal = req.session.grandTotal;
       const coaster= req.session.coaster;
+      const coasterb= req.session.coasterb;
+      const carb= req.session.carb;
       const bodaboda= req.session.bodaboda;
+      const bodabodab= req.session.bodabodab;
       const taxi= req.session.taxi;
+      const taxib= req.session.taxib;
       const truck= req.session.truck;
+      const truckb= req.session.truckb;
       const itemCount = req.session.itemCount;
       const bodabodacount = req.session.bodabodacount;
       const coastercount = req.session.coastercount;
@@ -40,8 +45,9 @@ router.get('/home',async (req, res, next) => {
       // Calculate the overall total
       const overallTotal = totalCarAmount + totalTruckAmount + totalBodabodaAmount + totalTaxiAmount + totalCoasterAmount;
       const total = grandTotal + coaster+ bodaboda+ taxi + truck;
-      const totalr = overallTotal + total
     const vehicletotal = itemCount +bodabodacount + coastercount + taxicount + truckcount
+    const totalb= taxib +truckb +carb + coasterb + bodabodab
+    const totalr = overallTotal + total +totalb
   
       res.render('home', {
         totalCarAmount,
@@ -50,17 +56,23 @@ router.get('/home',async (req, res, next) => {
         totalTaxiAmount,
         grandTotal,
         coaster,
+        coasterb,
         taxi,
+        taxib,
+        truckb,
         totalr,
         itemCount,
         coastercount,
         taxicount,
         truckcount,
+        carb,
+        totalb,
         vehicletotal,
         bodabodacount,
         truck,
         total,
         bodaboda,
+        bodabodab,
         totalCoasterAmount,
         overallTotal, // Pass the overall total to the template
 

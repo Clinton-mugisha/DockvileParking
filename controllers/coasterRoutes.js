@@ -182,7 +182,7 @@ router.get('/coasterblist', async (req, res) => {
 
     // Extract the grandTotal from the aggregated result
     let coaster = amounts.length > 0 ? amounts[0].coaster : 0;
-    req.session.coaster = coaster;
+    req.session.coasterb = coaster;
     res.render('coasterblist', { coasters: items, coaster });
   } catch (error) {
     return res.status(400).send({ message: 'sorry could not get employees' });

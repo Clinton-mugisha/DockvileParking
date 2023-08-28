@@ -170,7 +170,7 @@ router.get('/bodabodalistt', async (req, res) => {
   
       // Extract the grandTotal from the aggregated result
       let bodaboda = amounts.length > 0 ? amounts[0].bodaboda : 0;
-      req.session.bodaboda = bodaboda;
+      req.session.bodabodab = bodaboda;
       res.render('bodabodablist', { bodabodas: items, bodaboda });
     } catch (error) {
       return res.status(400).send({ message: 'sorry could not get employees' });

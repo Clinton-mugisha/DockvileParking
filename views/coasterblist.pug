@@ -70,6 +70,8 @@ div#table-container
         th(scope='col') Amount 
         th(scope='col') Delete
         th(scope='col') Edit
+        th(scope='col') SignOff
+        
     
     tbody
     if coasters.length 
@@ -90,6 +92,8 @@ div#table-container
               button.btn.btn-danger(type="submit" onclick="confirmDelete(event)") Delete
           td  
             a.btn.btn-warning(href="/api/coaster/edit/"+coaster._id) Edit
+          td  
+            a.btn.btn-success(href="/api/coaster/edit/"+coaster._id) SignOff
     else 
       p there are no employees in the database  
    

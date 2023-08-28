@@ -185,7 +185,7 @@ router.get('/truckblist', async (req, res) => {
 
     // Extract the grandTotal from the aggregated result
     let truck = amounts.length > 0 ? amounts[0].truck : 0;
-    req.session.truck = truck;
+    req.session.truckb = truck;
     res.render('truckblist', { trucks: items, truck });
   } catch (error) {
     return res.status(400).send({ message: 'sorry could not get employees' });

@@ -145,7 +145,7 @@ router.get('/parkinglistt', async (req, res) => {
   
       // Extract the grandTotal from the aggregated result
       let car = amounts.length > 0 ? amounts[0].car : 0;
-      req.session.car = car;
+      req.session.carb = car;
       res.render('parkingblist', { cars: items, car });
     } catch (error) {
       return res.status(400).send({ message: 'sorry could not get employees' });
